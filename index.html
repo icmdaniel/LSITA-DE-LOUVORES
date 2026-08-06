@@ -146,15 +146,17 @@
         /* ÁREA QUE SERÁ TRANSFORMADA EM IMAGEM */
         .capture-wrapper {
             background: white;
-            padding: 20px;
+            padding: 10px;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
             overflow-x: auto;
-            max-width: 100%;
         }
 
         #lista-louvores {
-            width: 600px; /* Largura fixa para manter a proporção da imagem */
+            width: 100%; /* Largura fluida para adaptar-se à tela do celular */
+            max-width: 600px; /* Mantém o limite máximo original em telas maiores */
             background-color: #fff;
             border: 2px solid #000;
             font-family: Arial, sans-serif;
@@ -246,6 +248,21 @@
 
         td[contenteditable="true"]:hover {
             background-color: #f9f9f9;
+        }
+
+        /* Media query para telas menores ajustarem margens e fontes se necessário */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .sub-header {
+                font-size: 18px;
+                padding: 8px 12px;
+            }
+            th, td {
+                padding: 10px 6px;
+                font-size: 16px;
+            }
         }
 
     </style>
