@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Louvores - ICM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #c8102e;
+            --secondary: #27ae60;
+            --info: #2980b9;
+            --bg-color: #f4f7f6;
+            --app-text: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--app-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* Container de Pesquisa com Sugestões Personalizadas */
+        .search-container {
+            position: relative;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-container input, .config-container input {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-container input:focus, .config-container input:focus {
+            border-color: var(--primary);
+        }
+
+        .config-container {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .config-container input {
+            width: 100%;
+        }
+
+        /* Lista suspensa customizada para ordenação inteligente */
+        #sugestoes-lista {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 110px; /* Deixa espaço para o botão adicionar */
+            background: white;
+            border: 2px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .sugestao-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            font-size: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sugestao-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-add {
+            background-color: var(--info);
+        }
+
+        .btn-salvar {
+            background-color: var(--secondary);
+        }
+
+        .btn-limpar {
+            background-color: #666;
+        }
+
+        /* ÁREA QUE SERÁ TRANSFORMADA EM IMAGEM */
+        .capture-wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        #lista-louvores {
+            width: 600px; /* Largura fixa para manter a proporção da imagem */
+            background-color: #fff;
+            border: 2px solid #000;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho ICM */
+        .header-icm {
+            padding: 15px 20px;
+            border-bottom: 2px solid #000;
+            text-align: center;
+        }
+
+        .logo-icm {
+            color: #bd1622;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-icm .serif {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sub-cabeçalho (Louvores e Data) */
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+
+        .sub-header .data-text {
+            text-decoration: underline;
+        }
+
+        /* Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 2px solid #000;
+            padding: 12px 10px;
+            font-size: 18px;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        th:first-child {
+            width: 80px;
+            text-align: center;
+        }
+
+        th:nth-child(2) {
+            text-align: center;
+        }
+
+        td:first-child {
+            text-align: center;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        /* Células editáveis */
+        td[contenteditable="true"] {
+            outline: none;
+            cursor: text;
+            text-transform: uppercase; /* Deixa tudo em maiúsculo automaticamente */
+        }
+        
+        td[contenteditable="true"]:empty:before {
+            content: "\feff"; /* Garante altura mínima para linhas vazias */
+            display: block;
+        }
+
+        td[contenteditable="true"]:hover {
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Gerador de Lista de Louvores</h1>
+
+    <div class="config-container">
+        <input type="text" id="nome-igreja-input" placeholder="Nome da igreja / localidade (Opcional, ex: Centro)" autocomplete="off">
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="busca-hino" placeholder="Pesquisar número ou nome do louvor..." autocomplete="off">
+        <div id="sugestoes-lista"></div>
+        <button onclick="adicionarHino()" class="btn-add">➕ Adicionar</button>
+    </div>
+    <div class="controls">
+        <button onclick="salvarImagem(event)" class="btn-salvar">💾 Salvar Imagem</button>
+        <button onclick="exportarECompartilhar(event)">📲 Compartilhar</button>
+        <button onclick="limparLista()" class="btn-limpar">🧹 Limpar</button>
+    </div>
+
+    <div class="capture-wrapper">
+        <div id="lista-louvores">
+            <div class="header-icm">
+                <div class="logo-icm">
+                    <span class="serif">IGREJA CRISTÃ MARANATA<span id="sub-igreja-display"></span></span>
+                </div>
+            </div>
+            
+            <div class="sub-header">
+                <span>LOUVORES</span>
+                <span>Data: <span id="data-atual" class="data-text"></span></span>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nome do Hino</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-corpo">
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                    <tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // LISTA COMPLETA DE LOUVORES (Gerada a partir do seu texto)
+        const listaBruta = `
+622 - A beleza da tua santidade
+593 - A Cristo coroai
+614 - A Deus demos glória
+607 - A Deus seja o louvor
+722 - A Deus, supremo Criador
+682 - A Jesus seja dada toda glória
+402 - A lei do Senhor é perfeita
+641 - A luz do mundo
+35 - A meu Senhor
+624 - A minh'alma engrandece
+103 - A minh'alma estava longe do caminho do céu
+183 - A minha alegria
+174 - A minha herança é o Senhor
+422 - A minha herança
+449 - A minha vida entrego
+109 - A minha vida tão vazia
+753 - A noiva e a igreja
+278 - A nova do evangelho
+421 - A obra do Senhor é perfeita
+251 - A paz que tu procuras
+717 - A terra semeamos
+677 - A ti, que habitas entre os querubins
+450 - A tua justiça
+446 - A tua palavra
+559 - A última trombeta soará
+734 - A vida de minh'alma
+316 - A vida no mundo é cruel
+768 - A vitória desta igreja é oração
+396 - Abba Pai
+773 - Abra a porta, venha ver
+646 - Agradecidos somos a ti
+276 - Ainda que os seus sonhos
+475 - Ainda uma vez (Ageu)
+653 - Aleluia (Sl 113)
+592 - Aleluia! Muitas vozes de anjos
+535 - Além do céu azul
+41 - Além do véu eu quero estar
+510 - Alerta povo, está chegando a nossa hora
+379 - Algemado por um peso
+293 - Alma cansada
+167 - Amo ao meu Senhor
+405 - Amo ao Senhor de todo o meu coração
+122 - Amo ao Senhor porque ele me ouviu
+689 - Amor, que por amor desceste!
+521 - Ao chegar ao céu gozo eu terei
+590 - Ao Cordeiro
+691 - Ao Deus de Abraão
+616 - Ao Deus de amor e de imensa bondade
+712 - Ao findar o labor desta vida (A última hora)
+543 - Ao lado de Deus
+542 - Ao lado de Jesus eu quero estar
+601 - Ao que está no trono
+292 - Ao sentir o mundo ao meu redor
+46 - Ao sentir o teu perdão
+403 - Aquele que tem os meus mandamentos
+380 - Posso sentir o seu toque em mim (Glorifica)
+790 - Aquele que habita no esconderijo
+287 - Não tinha parecer
+787 - Ardendo em fogo minh'alma está
+541 - Arrebatado fui no dia do Senhor
+720 - As grutas, as rochas imensas (Um hino ao Senhor)
+366 - As lágrimas falam, Jesus te escuta
+193 - As muitas águas não poderiam apagar
+140 - As muitas águas
+114 - As riquezas do mundo
+701 - As tuas mãos dirigem meu destino
+131 - Às vezes, alguém me pergunta
+481 - Assim como a noite espera pelo dia
+58 - Atende a voz do meu clamor
+84 - Atende, Senhor, a minha oração
+329 - Atua em nosso meio
+719 - Avante, avante, ó crentes
+288 - Basta dizeres o que queres
+304 - Basta que me toques, Senhor
+60 - Bem de manhã, embora o céu sereno
+384 - Bem sei que tudo podes
+94 - Bendita a hora de oração
+22 - Bendito seja o Cordeiro
+665 - Bendizei ao Senhor
+320 - Bom é o Senhor
+508 - Breve no céu Jesus há de aparecer
+534 - Breve voltará o Messias
+64 - Brilhe sobre mim
+95 - Buscar-me-eis
+97 - Buscou-me com ternura
+82 - Cada instante
+391 - Cantarei a bondade e a justiça
+390 - Cantarei a misericórdia
+582 - Cantarei ao amor dos amores
+618 - Cantarei ao meu Senhor enquanto eu viver
+780 - Cantarei, cantarei as misericórdias
+597 - Cantarei, cantarei hosana (Viva o Rei)
+713 - Careço de Jesus
+469 - Castelo forte
+659 - Celebrai com júbilo ao Senhor
+488 - Certa vez, ao orar
+776 - Certa vez eu orando
+215 - Certo homem tão nobre
+456 - Chuvas de bênçãos teremos
+5 - Clamando estou
+15 - Clamarei, clamarei
+3 - Clamo a ti
+96 - Com a minha voz clamo ao Senhor (Sl 142)
+714 - Com tua mão segura bem a minha (Amparo Divino)
+692 - Comigo habita, ó Deus!
+169 - Como a flor do campo
+271 - O caminho que nos leva ao céu é Jesus
+777 - Como as águas
+430 - Como Cristo ensinou
+117 - Como desistir deste grande amor?
+182 - Como é bom servir ao Senhor
+573 - Como é bom te adorar
+493 - Como foi para o céu, Jesus Cristo há de vir
+401 - Como tu queres
+78 - Como um bom Pastor
+378 - Confia e ora
+344 - Confio em Deus
+44 - Conforme a tua infinita graça
+328 - Consolai, consolai o meu povo
+767 - Conta pra Jesus onde é a tua dor
+27 - Cordeiro eterno
+645 - Coroai
+211 - Cortaram o madeiro
+213 - Cristo caminhava em direção à cruz
+261 - Cristo caminhava lentamente
+147 - Cristo é tudo para mim
+151 - Cristo Jesus é o meu bom Salvador
+53 - O sangue do Cordeiro de Deus
+354 - Cristo me dará
+723 - Cristo pode hoje vir (Oh! Dia alegre!)
+498 - Cristo vem me buscar
+142 - Cristo, meu Mestre, sempre há de amar-me
+153 - Cristo, nome mais alto
+36 - Crucificado foi meu Jesus
+28 - O poder do sangue de Jesus
+690 - Da igreja o fundamento é Cristo (A Pedra fundamental)
+555 - Da linda pátria
+613 - Dai glória a Deus
+364 - Dá-me mais fé
+88 - Das profundezas
+89 - Das profundezas clamo a ti, ó Senhor!
+66 - De madrugada eu busco a face do Senhor
+750 - Deixa a glória de Deus brilhar
+239 - Deixa Deus falar ao teu coração
+353 - Deixa-me chorar
+217 - Deixou o esplendor de sua glória
+189 - Dependo de ti, Senhor
+440 - Derramarei meu Espírito
+175 - Desde o dia em que te conheci
+706 - Deste mundo escravo fui (Grandes coisas fez o Senhor por nós)
+208 - Deus amou o mundo de tal maneira
+359 - Deus é nosso amparo, nossa fortaleza
+207 - Deus enviou seu filho amado
+778 - Deus está aqui
+73 - Deus está no templo
+260 - Deus está presente aqui neste lugar
+79 - Deus está presente entre pecadores como nós
+323 - Deus está presente sempre pronto a nos ajudar
+209 - Deus o seu Filho enviou
+362 - Deus proverá
+340 - Deus te guardará
+715 - Deus vos guarde pelo seu poder
+625 - Digno é Jesus
+445 - Dirige-me, Senhor
+564 - Dispõe-te, resplandece
+338 - Divino companheiro
+760 - Do céu virá
+486 - Do norte vem o áureo esplendor
+214 - Dois discípulos no caminho de Emaús
+693 - Dormindo no meu leito (Jerusalém, cidade santa)
+164 - É bastante para mim a tua graça
+745 - É Deus quem nos tem dado a vitória
+145 - É o amor de Deus
+72 - É preciso confiar e buscar a Deus
+459 - É tempo, é tempo
+47 - É teu sangue
+679 - Eis a escrava resgatada
+330 - Eis aí o dia aceitável
+409 - Eis marchamos para aquele bom país
+237 - Eis mensagem do Senhor
+24 - Eis o Cordeiro de Deus
+466 - Eis o estandarte
+724 - Eis os milhões
+727 - Eis que abro a porta
+222 - Eis que estou à porta e bato
+408 - Eis que surge um povo forte
+198 - Ele é a minha alegria
+159 - Ele é a rosa de Sarom
+684 - Ele é o Rei dos reis
+491 - Ele um dia voltará
+490 - Ele voltará pra buscar a sua igreja
+492 - Ele voltará, sim, ele voltará
+489 - Em breve escutarei
+544 - Em breve o dia chegará
+509 - Em breve, mui breve
+57 - Em fervente oração
+297 - Em me vindo o temor
+135 - Em meu coração
+345 - Em nada ponho a minha fé
+642 - Em nossos lábios
+14 - Em teu altar, Senhor
+86 - Em teu nome
+181 - Em ti eu encontro, ó Deus, toda paz
+17 - Em tua presença entramos
+90 - Em tuas mãos, Senhor
+180 - Encontrei o grande amor
+716 - Enquanto, ó Salvador, teu livro ler
+228 - Entrega o teu caminho ao Senhor
+398 - Entrei no tempo de Deus
+635 - Entronizado está entre as nações
+85 - Envia a tua luz
+224 - Era um pecador, andava sem Jesus
+161 - Era uma oliveira
+596 - És majestade
+661 - És o mais formoso, Jesus
+429 - És o pão da vida
+52 - Escuta-me, Senhor
+368 - Esforça-te, tem bom ânimo!
+348 - Espera no Senhor, anima-te
+436 - Espírito do trino Deus
+441 - Espírito Santo, ó consolador
+758 - Esta alegria não vai mais sair
+514 - Esta é a voz, a voz do meu amado
+476 - Esta obra é de Deus
+136 - Esta paz que sinto em minh'alma
+620 - Estamos aqui, ó Deus
+557 - Este mundo jamais pode me separar
+281 - Este mundo não tem a sua paz
+289 - Estende tua mão
+700 - Estevão avistou (Eu também quero ver)
+127 - Estou a caminhar
+752 - Estou alegre
+785 - Estou confiando
+528 - Eu avisto uma terra feliz
+707 - Eu confio em ti, Senhor
+244 - Eu desci para o vale de bênção e paz
+480 - Eu espero, ansioso, por meu Deus
+133 - Eu estava só, sem o Senhor
+751 - Eu louvarei, eu louvarei
+326 - Eu não saberia caminhar
+674 - Eu não sei qual será meu louvor
+529 - Eu ouvi da formosa cidade
+725 - Eu perdido pecador
+623 - Eu quero cantar de gozo e de paz
+191 - Eu quero sentir
+392 - Eu quero ser, Senhor
+170 - Eu sou tão feliz com o meu Jesus
+160 - Eu sou do meu amado e ele me tem afeição
+324 - Eu sou pobre e necessitado
+584 - Eu te amo, meu Jesus
+739 - Eu tenho um tesouro
+740 - Eu tenho um Deus mui, mui, mui grande
+407 - Eu vi o Senhor
+146 - Existe um alguém que cuida de mim
+522 - Existe um lar
+395 - Fala, Jesus querido
+350 - Faz-me inabalável
+129 - Felicidade é ter Cristo ao meu lado
+783 - Feliz, feliz eu sou
+536 - Finda a lida terreal
+347 - Firme nas promessas
+435 - Fluirá como um rio
+585 - Fonte da vida
+230 - Fonte de águas vivas
+577 - Glória e aleluia
+591 - Glória pra sempre ao Cordeiro de Deus
+738 - Glória, glória
+634 - Glorioso és, Jesus
+115 - Graças dou, ó Senhor
+195 - Grande amor, ó grande amor
+81 - Grande Deus, único Deus
+654 - Grande é o Senhor e mui digno de ser louvado
+656 - Grande é o Senhor
+705 - Grandes são, Senhor, os teus feitos! (Gratidão)
+162 - Grandioso para mim
+280 - Há hoje alguém esperando
+299 - Há momentos que as palavras não resolvem
+138 - Há sempre alguém que não provou
+468 - Há tanta terra
+322 - Há um amigo sempre junto
+434 - Há um doce Espírito aqui
+525 - Há um lindo país
+538 - Há um lugar pra mim
+588 - Há um nome que reluz
+418 - Há um povo que te adora
+443 - Há um rio de águas vivas
+155 - Há um ser que vive em mim
+598 - Há um só que é digno
+202 - Há uma fonte aberta no Calvário
+397 - Há uma luz a brilhar
+419 - Há uma obra que Deus quer fazer
+12 - Há vitória para mim
+54 - Há vitória sempre em ti, Senhor
+578 - Hoje o Senhor derramou
+197 - Hoje quero somente agradecer
+788 - Igreja, tu vais subir
+457 - Instrumento em tuas mãos
+63 - Invoca-me e te responderei
+108 - Israel saiu do Egito
+243 - Já achei uma flor gloriosa
+382 - Já cheguei até aqui (Vitórias)
+132 - Já não estou sozinho
+517 - Já não tarda o amanhecer
+570 - Já refulge a glória eterna (Vencendo vem Jesus!)
+694 - Jerusalém eterna
+695 - Jerusalém excelsa
+531 - Jerusalém, Jerusalém
+554 - Jerusalém (Suas ruas de ouro)
+120 - Jesus Cristo mudou meu viver
+683 - Jesus Cristo voltará
+511 - Jesus Cristo voltará com seu grande esplendor
+611 - Jesus, Deus santo, santo, santo!
+370 - Jesus é a rocha inabalável
+225 - Jesus é melhor, sim, que ouro e bens
+746 - Jesus é o amigo melhor
+268 - Jesus é o Cordeiro
+763 - Jesus é tudo pra mim
+545 - Jesus está às portas
+149 - Jesus fez a promessa
+205 - Jesus ia seguindo
+203 - Jesus ia subindo o monte
+794 - Jesus libertou
+589 - Jesus tão belo
+638 - Jesus veio e salvou-me
+569 - Jesus vem! Vem nos buscar!
+113 - Jesus, a luz divina
+91 - Jesus, a minh'alma tem sede de ti
+144 - Jesus, agora eu bem sei
+221 - Jesus, em tua presença
+192 - Jesus, Jesus, eu te amo
+119 - Jesus, nome precioso
+158 - Jesus, o lírio dos vales
+6 - Jesus, ó meu Jesus
+406 - Jesus, o que eu mais quero no mundo
+404 - Jesus, quero amar-te
+185 - Jesus, Senhor, me chego a ti (Eu venho como estou)
+497 - Jesus, sim, vem, do céu em glória ele vem
+600 - Jesus, te entronizamos
+599 - Jesus, te entronizamos aqui entre nós
+39 - Jesus, tu és o meu Deus
+31 - Junto a ti suplico, ó Pai
+539 - Junto ao trono de Deus, preparado
+667 - Justo és, Senhor
+565 - Lá está o meu tesouro
+523 - Lá no céu os anjos cantam
+765 - Lá no céu todos cantam aleluia
+68 - Lá no cimo do monte
+383 - Lá onde eu não posso ver (A oração)
+265 - Leva tu contigo o nome
+652 - Levantai-vos, ó portais eternos
+526 - Lindo! Lindo! Lindo!
+93 - Logo de manhã
+636 - Louvai a Jesus
+663 - Louvai ao Senhor todas as nações
+655 - Louvai, servos do Senhor
+644 - Louvamos-te, ó Deus
+792 - Louvando a Deus (At 2.47)
+603 - Louvarei ao meu Senhor
+615 - Louvor e glória
+442 - Mais do teu Santo Espírito
+152 - Mais perto de Jesus
+319 - Mais perto quero estar
+83 - Mais uma vez
+595 - Majestade, glória e majestade
+165 - Maravilhosa graça
+102 - Maravilhoso e sublime pra mim
+549 - Maravilhoso será
+658 - Meditarei nas maravilhas do Senhor
+306 - Medo tens que o tentador te vá vencer?
+793 - Mesa preparada
+310 - Mestre, o mar se revolta
+241 - Meu amado filho
+732 - Meu coração contente está
+255 - Meu coração engrandece ao Senhor (Cântico de vitória!)
+381 - Meu Deus vence batalhas
+87 - Meu pecado resgatado
+672 - Meu servo, não temas
+473 - Minha porção
+204 - Morri na cruz por ti
+639 - Motivos tenho pra louvar-te
+632 - Muitos anjos louvam
+372 - Muitos são os que confiam
+731 - Na casa de meu Pai não há tristeza
+675 - Na eternidade
+594 - Na expressão deste louvor
+49 - Na hora em que eu quiser falar com Deus
+556 - Na nova Jerusalém irei morar
+789 - Na presença de Jesus
+696 - Na terra abençoada
+335 - Não desanimes! Deus proverá
+176 - Não existe outro amor igual ao teu, Senhor
+220 - Não há amor igual
+361 - Não há Deus acima do Senhor
+741 - Não há Deus tão grande como tu
+256 - Não mais vivo eu, mas Cristo vive em mim
+563 - Não se turbem os vossos corações
+139 - Não sei por que de Deus o amor
+494 - Não sei quando Cristo Jesus há de vir
+269 - Não sei se ouviste falar
+365 - Não temas, pois te escolhi (Quando pelas águas)
+518 - Não terei mais tristezas
+287 - Não tinha parecer
+496 - Não vai tardar
+548 - Nas lindas moradas
+298 - Nem sempre entendemos
+21 - Nesta hora de clamor
+7 - Nesta hora em oração
+37 - Nesta hora esqueço o mundo
+76 - Nesta noite feliz
+742 - No céu há janelas abertas
+766 - No dia da grande glória
+470 - No Getsêmani
+451 - No serviço do meu Rei eu sou feliz
+62 - No silêncio da noite
+520 - No trono da cidade de Deus
+45 - Nos átrios do Senhor entramos
+580 - Nos prostremos aos seus pés
+627 - Nós te adoramos, Senhor
+764 - Nós vamos lá, irmãos
+728 - Nossa gratidão
+605 - Nosso Deus e soberano
+681 - Nosso louvor
+272 - Novo caminho
+166 - Ó amado de minh'alma
+284 - O amor de Deus é grande
+141 - O amor de Deus por nós
+171 - O amor de Jesus é grande
+69 - O anjo do Senhor está passeando
+271 - O caminho que nos leva ao céu é Jesus
+762 - O céu é um lugar maravilhoso
+51 - O Cordeiro que na cruz morreu
+606 - O Criador do universo
+458 - Ó Cristo! Pão da vida
+178 - O Deus a quem servimos
+501 - O Espírito de Deus fala à sua igreja
+438 - O Espírito do Senhor está sendo derramado
+465 - O estandarte desta igreja
+196 - O grande amor do meu Senhor
+583 - O grande Deus
+571 - O grande dia está chegando
+769 - O grande relógio
+460 - Ó Jesus! Ó vera Páscoa
+587 - Ó Jesus, exaltar-te-ei
+337 - O mesmo Deus
+424 - O meu amado desceu ao seu jardim
+512 - O meu amado fala e me diz
+660 - O meu coração
+604 - O meu louvor é fruto
+710 - O meu viver é Cristo
+283 - O mundo não sabe
+733 - O nome de Jesus é doce
+673 - Ó Pai, eu queria tanto ver (Autor da minha fé)
+423 - Ó Pastor de Israel
+28 - O poder do sangue de Jesus
+111 - O povo que andava em trevas
+586 - Ó profundidade das riquezas
+495 - O que há de vir, virá
+313 - O que habita no abrigo de Deus
+290 - O que os olhos nunca viram
+332 - O Rei e eu
+2 - O sangue de Jesus tem poder para salvar
+1 - O sangue de Jesus tem poder
+50 - O sangue de Jesus
+32 - O sangue de Jesus, vertido ali na cruz
+53 - O sangue do Cordeiro de Deus
+411 - O Senhor da ceifa está chamando
+273 - O Senhor é a alegria
+305 - O Senhor é a minha luz
+357 - O Senhor é o meu Pastor (Bondade e misericórdia)
+566 - O Senhor é o meu Pastor (Maranata, Jesus vem)
+648 - O Senhor é o meu Pastor (Minh'alma cantará)
+356 - O Senhor é o meu Pastor (Refrigera a minha alma)
+358 - O Senhor é o meu Pastor (Sl 23)
+376 - O Senhor te guiará
+118 - Ó Senhor, Deus de Israel (Edifiquei uma casa)
+226 - O sentido de viver
+507 - O sol escurecerá
+20 - O teu pecado tu queres deixar?
+154 - Ó tu que habitas entre os querubins
+439 - Ó vem derramar
+650 - Ó vinde e adoremos
+626 - Oh! Contemplai
+540 - Oh! Pensai nesse lar lá do céu
+309 - Oh! Por que duvidar?
+546 - Oh! Quanto almejo estar
+427 - Oh! Quão bom e quão suave é
+110 - Oh! Quão cego andei e perdido vaguei
+264 - Oh! Que belos hinos hoje lá no céu
+30 - Oh! Que precioso sangue
+40 - Oh! Que sangue poderoso
+530 - Oh! Que saudosa lembrança
+254 - Olhai para o alto
+223 - Onde está o Cordeiro?
+98 - Onde estaria eu?
+662 - Onipotente Deus
+502 - Quando lá do céu descendo
+657 - Os céus proclamam
+467 - Os guerreiros se preparam
+343 - Os que confiam no Senhor
+375 - Os segredos do teu coração
+505 - Os seus cabelos brancos
+482 - Os sinais do fim se cumprem
+729 - Os teus anjos te exaltam
+432 - Ouço a voz do meu amado me chamar
+499 - Ouço uma voz tão suave
+236 - Ouve a voz de Jesus
+671 - Ouve, pois, Israel
+561 - Ouvi como que a voz de uma grande multidão
+708 - Ouvi no céu (Bodas do Cordeiro)
+697 - Ouvi o Salvador dizer
+92 - Pai Celeste
+206 - Pai, a ti entrego o meu espírito
+339 - Para os montes olharei
+186 - Para quem iremos nós?
+552 - Pátria minha
+125 - Pela fé eu caminho
+179 - Pela fé eu posso contemplar Jesus
+106 - Pela fé somos salvos
+416 - Pelas praias galiléias vem Jesus
+48 - Pelo sangue de Jesus eu vou clamar
+38 - Pelo sangue de Jesus irei clamar
+8 - Pelo sangue de Jesus
+307 - Pelo vale escuro seguirei Jesus
+105 - Perdido foi que ele me encontrou
+124 - Peregrinando por sobre os montes
+685 - Perfeito amor eu conheci
+13 - Põe teu sangue sobre mim
+218 - Por amor Jesus morreu
+219 - Por amor
+245 - Por onde quer que eu vá
+770 - Por que deixar que as ânsias
+380 - Posso sentir o seu toque em mim (Glorifica)
+70 - Preciosas são as horas
+721 - Proclamai a todo o mundo que o Senhor é Rei
+308 - Profundos vales eu terei de passar
+18 - Prostrado estou diante de ti
+399 - Qual madeira
+386 - Qual o adorno desta vida?
+516 - Quando a angelical trombeta
+318 - Quando a angústia vem
+128 - Quando a mão de Deus em mim veio tocar
+726 - Quando a tempestade ruge
+301 - Quando a tristeza surgir
+515 - Quando a última trombeta ecoar
+107 - Когда andava no mundo escravizado
+363 - Когда as lutas me cercam
+34 - Quando buscamos
+453 - Quando dobro os meus joelhos em oração
+686 - Quando Jesus provou o seu amor por mim
+267 - Quando Jesus seu sangue verteu
+173 - Quando Jesus um dia
+699 - Que grande reunião convocada ali (Jesus de Nazaré)
+300 - Quando parece que tudo acabou
+567 - Quando será o grande dia
+4 - Quando te prostrares
+317 - Quando vem nos olhos uma lágrima
+455 - Quanto mais eu te conheço (Caminho feliz)
+462 - Quantos fiéis, Senhor
+664 - Quão amáveis são
+321 - Quão bondoso amigo é Cristo
+385 - Quão difícil é, Senhor (Faze-me um vencedor)
+629 - Que alegria
+786 - Que as palavras da minha boca
+748 - Que calor é este em volta do altar?
+341 - Que consolação
+137 - Que doce voz tem meu Senhor
+314 - Que importa
+134 - Que segurança tenho em Jesus
+425 - Que vista amável é
+232 - Quem beber da água que eu lhe der
+756 - Quem cantar aqui se alegrará
+687 - Quem é como tu?
+513 - Quem é esta que aparece
+282 - Quem é que dá água ao sedento?
+101 - Quem era eu antes de conhecer
+731 - Quem me dá água
+479 - Quem me dera
+474 - Quem sou eu, Senhor?
+263 - Queres ir pra glória?
+352 - Queres neste mundo ser um vencedor?
+194 - Quero andar em teu caminho, Senhor
+279 - Quero estar ao pé da cruz
+126 - Quero prosseguir
+452 - Quero que me toques, Senhor
+262 - Quero que você conheça
+393 - Quero ser fiel ao meu Senhor
+415 - Quero ser um vaso de bênção
+374 - Quero tocar em tuas vestes, Senhor
+184 - Redentor onipotente
+527 - Regozijai-vos
+709 - Resplandece, ó Jerusalém
+576 - Reunimo-nos aqui pra te adorar
+11 - Reveste, Senhor, teu povo
+277 - Rocha eterna
+342 - Rocha minha
+360 - Rochedo forte é o Senhor
+212 - Rude cruz
+602 - Santo é o que está no trono
+628 - Santo é seu nome
+610 - Santo! Santo! Santo! Deus onipotente!
+647 - Santo, santo, santo é o Senhor
+612 - Santo, santo, santo, ó Deus de glória e poder
+630 - Saudai o nome de Jesus
+346 - Se a fé por vezes falta
+302 - Se a vida parece pesada
+247 - Se anda triste o teu viver
+16 - Se andarmos na luz
+367 - Se as lutas da vida
+240 - Se cansado tu estás
+331 - Se Deus é por nós
+252 - Se dispuseres o teu coração (Jó 11.13-19)
+253 - Se dispuseres o teu coração
+315 - Se em profundo abismo te encontras
+246 - Se em teu viver
+249 - Se em tua vida falta paz
+274 - Se em tua vida não encontras paz e luz
+242 - Se esta noite Deus pedir tua alma
+737 - Se estás cansado
+524 - Se eu estivesse na alvorada
+631 - Sê exaltado, ó Deus
+325 - Se hoje escutares
+143 - Se não fosse o amor
+349 - Se não fosse o Senhor
+303 - Se não puderes mais
+59 - Se orarmos ao Senhor
+670 - Se paz, a mais doce
+333 - Se te encontrares triste
+258 - Se tu estás tão longe do Senhor
+270 - Se tu pediste um sinal
+250 - Se tu procuras pela paz
+373 - Se um dia Deus prometeu
+248 - Se você quiser saber
+312 - Se, da vida, as vagas procelosas são
+123 - Seguir-te-ei
+500 - Sei que o Senhor
+74 - Sei, Senhor
+26 - Seja só o Senhor louvado aqui
+291 - Sempre que quiseres falarei contigo
+477 - Sempre vou lembrar
+177 - Sempre vou lembrar o que fizeste por mim
+25 - Senhor, a ti clamo
+579 - Senhor, eu nem sei contar
+448 - Senhor, eu quero servir-te
+447 - Senhor, guia-nos
+747 - Senhor, manda poder
+9 - Senhor, me chego a ti
+55 - Senhor, meu Deus e Pai
+609 - Senhor, meu Deus, quando eu maravilhado
+389 - Senhor, o que é a nossa vida?
+23 - Senhor, ouve a minha oração
+568 - Senhor, quem são aqueles
+704 - Senhor, se estivesses aqui (Lázaro)
+42 - Senhor, suplico a ti em oração
+172 - Senhor, te amo, te amo
+75 - Sente em tua face o roçar
+731 - Sequência de louvores nº 1
+732 - Sequência de louvores nº 2
+733 - Sequência de louvores nº 3
+703 - Será de manhã
+485 - Sete castiçais
+201 - Seu corpo cansado pelas caminhadas
+735 - Seu nome é Jesus
+227 - Só Jesus te pode dar o que procuras
+781 - Só o poder de Deus
+388 - Só tu és, Senhor
+730 - Só tu nos fazes vencedores
+311 - Só uma voz me basta
+755 - Somente pela fé
+216 - Somos teu povo
+420 - Somos teu povo e queremos
+387 - Sonda-me, ó Deus
+731 - Sou feliz porque sou de Cristo
+412 - Sou forasteiro aqui
+61 - Suba a minha oração
+775 - Subindo para o céu eu vou
+666 - Tal qual estou
+238 - Tanto tempo já faz que o chamado divinal
+575 - Te adoramos
+633 - Te exaltaremos
+649 - Te louvamos, Senhor
+484 - Temei a Deus
+130 - Tenho grande gozo
+551 - Tenho lido da bela cidade (A bela cidade)
+782 - Tenho nova vida
+503 - Tenho saudades de Jesus, meu Mestre
+163 - Tenho uma pedra viva
+680 - Teu nome é pra mim, Senhor
+19 - Teu povo clama
+67 - Toca pela fé
+296 - Toda a minha dor Jesus levou
+637 - Toda a terra te exalta
+371 - Toda promessa
+643 - Todo louvor seja dado a Deus
+190 - Todo o meu ser te ama
+266 - Todos os povos
+433 - Tomai agora o pão
+156 - Totalmente desejável é o meu amado
+29 - Transborda-me, Senhor
+168 - Tu és fiel, Senhor
+351 - Tu és meu Rei
+285 - Tu que andas só e triste sem saber o caminho
+506 - Tu que estás assentado
+464 - Tu que sobre a amarga cruz
+461 - Tu, ó Senhor, tu és tão puro de olhos (Aviva a tua obra)
+678 - Tua glória enche toda a terra
+711 - Tua graça me basta, ó Senhor
+698 - Tua, ó Deus, é toda a grandeza
+257 - Tudo se fez novo
+121 - Tudo, ó Cristo, a ti entrego
+426 - Um corpo só, um só Espírito
+286 - Um dia eu quis te deixar
+99 - Um dia Jesus achou-me
+210 - Um dia Jesus desceu da sua glória
+275 - Um milagre é
+519 - Um novo lar me espera
+410 - Um pendão real vos entregou o Rei
+668 - Um pobre cego
+148 - Uma certa vez, Jesus Cristo
+112 - Uma luz brilhou em meu caminho
+78 - Uma voz mansa e delicada
+394 - Uma voz me disse lá do céu
+10 - Vamos lavar as vestes
+437 - Vem sobre mim, Espírito de Deus
+553 - Vem! Maranata, Jesus vem!
+71 - Vem, amado meu
+619 - Vem, derrama a paz
+471 - Vem, Espírito de Deus
+558 - Vem, Jesus Cristo já vem
+428 - Vem, ó Cristo, encher meu cálice
+463 - Vem, Senhor, visita tua vinha
+77 - Vem, visita tua igreja
+743 - Vencedor serei
+355 - Vencer, vencer
+188 - Venho, Senhor, minha vida oferecer
+478 - Vi um novo céu
+487 - Vigiai e sempre orai, ó crentes
+472 - Vinde, cantai e entoai louvores a Jesus
+103 - Vinde, meninos
+744 - Vitória Deus dará a mim, eu sei
+56 - Vitória sobre vitória
+80 - Vives muito além do céu
+104 - Vivi tão longe do Senhor
+43 - Vou clamar
+150 - Vou contar-vos o que penso do meu Mestre
+233 - Vou guiar-te a uma rica fonte
+(CIAS) 146 - A igreja que ora é vitoriosa
+(CIAS) 227 - A Jesus irei louvar
+(CIAS) 49 - A minha alegria é crescer com o meu Senhor!
+(CIAS) 205 - A minha alma espera
+(CIAS) 41 - A minha casa firme está
+(CIAS) 191 - A noiva amada do Cordeiro
+(CIAS) 202 - A Raabe veio a ordem
+(CIAS) 174 - A tua palavra e semente
+(CIAS) 199 - Aguardando a orientação do Salvador
+(CIAS) 162 - Andai na minha presença
+(CIAS) 148 - Andando em Espírito (Fruto do Espirito)
+(CIAS) 94 - Aquele que tem sede
+(CIAS) 74 - Aquilo que melhor existe
+(CIAS) 166 - Brilhando, brilhando
+(CIAS) 18 - Buscai ao Senhor
+(CIAS) 109 - Canta alegremente, ó filha de Sião
+(CIAS) 229 - Cantai alegremente a Deus
+(CIAS) 89 - Certo homem, príncipe dos judeus (Nicodemos)
+(CIAS) 150 - Cinco seixos
+(CIAS) 10 - Clama, ó igreja
+(CIAS) 11 - Clamo a ti, meu Senhor e Pai (Uma nova canção)
+(CIAS) 04 - Clamo, ó Senhor
+(CIAS) 03 - Clamo, ó Senhor, por teu sangue
+(CIAS) 131 - Com Cristo no barco
+(CIAS) 125 - Com Jesus vencedor serei
+(CIAS) 154 - Com o Espírito de Deus em minha vida
+(CIAS) 54 - Como é bom saber
+(CIAS) 46 - Como é bom servir a Deus
+(CIAS) 153 - Como Noé
+(CIAS) 142 - Como uma folha ao vento
+(CIAS) 112 - Consola-me, Espírito Santo
+(CIAS) 176 - Cria em mim, ó Deus
+(CIAS) 122 - Cristo é meu amigo
+(CIAS) 128 - Cristo é meu amigo, é meu amigo
+(CIAS) 56 - Cristo é o Senhor
+(CIAS) 127 - Cristo e vitória
+(CIAS) 100 - Cristo sente amor por mim
+(CIAS) 33 - Cristo, meu bom Mestre
+(CIAS) 163 - Dá-me um coração cheio do teu amor
+(CIAS) 164 - Dá-me um coração humilde e reto
+(CIAS) 167 - Daniel na cova dos leões
+(CIAS) 102 - Das maravilhas que a biblia contém
+(CIAS) 73 - De eternidade a eternidade
+(CIAS) 117 - Deitada na relva uma feliz ovelha
+(CIAS) 79 - Deus ama você
+(CIAS) 224 - Deus criou os céus e a terra
+(CIAS) 60 - Deus falou comigo
+(CIAS) 126 - Deus forte como Jeová
+(CIAS) 222 - Deus habita no meio dos louvores
+(CIAS) 08 - Diante do teu altar
+(CIAS) 178 - Disse Jesus aos Judeus (Eu trabalho também)
+(CIAS) 50 - Do alto céu
+(CIAS) 95 - Do pão do céu
+(CIAS) 09 - Dobro os meus joelhos
+(CIAS) 139 - Dons do Espírito Santo
+(CIAS) 53 - É bom, é bom demais
+(CIAS) 55 - É somente teu meu coração
+(CIAS) 62 - É tão triste não vera luz (O cego Bartimeu)
+(CIAS) 07 - É teu sangue, meu Senhor Jesus
+(CIAS) 215 - Eis que Jesus vem nas nuvens
+(CIAS) 51 - Eis-me aqui, Senhor em teu altar
+(CIAS) 27 - Ele é a Raiz
+(CIAS) 90 - Ele morreu, mas ressurgiu
+(CIAS) 219 - Ele vira no meio da noite
+(CIAS) 30 - Ele vive em mim
+(CIAS) 195 - Em breve estaremos na glória
+(CIAS) 147 - Em tuas pisadas
+(CIAS) 111 - Entrega o teu caminho
+(CIAS) 230 - Esta canção
+(CIAS) 157 - Este mundo não é meu lugar
+(CIAS) 05 - Estou aqui pra confessar
+(CIAS) 98 - Eu abri meu coração
+(CIAS) 36 - Eu quero andar sempre com Jesus
+(CIAS) 107 - Eu quero cantar
+(CIAS) 208 - Eu quero ir para o céu
+(CIAS) 31 - Eu quero ser o sal da terra
+(CIAS) 26 - Eu sou uma ovelhinha
+(CIAS) 110 - Eu tudo posso naquele que me fortalece
+(CIAS) 225 - Eu vim aqui, Senhor
+(CIAS) 238 - Eu vou cantar
+(CIAS) 64 - Eu vou contar uma história (Zaqueu)
+(CIAS) 241 - Exaltai, exaltai
+(CIAS) 80 - Existe um lugar
+(CIAS) 160 - Existem segredos na tua palavra
+(CIAS) 177 - Fala ao meu coração, Jesus
+(CIAS) 22 - Faze oração
+(CIAS) 135 - Flua em mim, Senhor
+(CIAS) 83 - Foi no caminho para Damasco
+(CIAS) 193 - Há uma igreja
+(CIAS) 57 - Há uma linda canção de amor
+(CIAS) 185 - Há uma linda morada
+(CIAS) 105 - Haveremos de chegar
+(CIAS) 108 - Hoje é um grande dia
+(CIAS) 232 - Hoje eu não quero pedir
+(CIAS) 228 - Hosana ao Filho de Davi
+(CIAS) 190 - Igreja, corpo de Cristo
+(CIAS) 226 - Irei cantar e adorar o Rei Jesus
+(CIAS) 188 - Jerusalém anseio ver
+(CIAS) 181 - Jerusalém, cidade do meu Rei
+(CIAS) 168 - Jesus chama os seus ministros
+(CIAS) 48 - Jesus Cristo é o amado
+(CIAS) 106 - Jesus Cristo é o caminho
+(CIAS) 92 - Jesus cura e salva
+(CIAS) 239 - Jesus é a nossa vitória
+(CIAS) 97 - Jesus é o caminho
+(CIAS) 76 - Jesus falou que o céu é pra mim
+(CIAS) 101 - Jesus me ama
+(CIAS) 196 - Jesus nos prometeu
+(CIAS) 207 - Jesus prometeu nos buscar
+(CIAS) 45 - Jesus ressuscitou! (Meu amigo Jesus)
+(CIAS) 93 - Jesus te ama
+(CIAS) 133 - Jesus vê a sua igreja
+(CIAS) 82 - Jesus vem nos buscar
+(CIAS) 71 - Jesus viu a multidão (A multiplicação)
+(CIAS) 210 - Jesus voltará pra me buscar! (Maranata)
+(CIAS) 115 - Jesus, o bom Pastor
+(CIAS) 119 - Jesus, o melhor amigo
+(CIAS) 29 - Jesus, quando me lembro
+(CIAS) 15 - Jesus, vem me abençoar
+(CIAS) 213 - Lá no doce porvir
+(CIAS) 136 - Lâmpada para meus pés
+(CIAS) 204 - "Marchai! Marchai!"
+(CIAS) 197 - Maranata! Vem, Senhor Jesus
+(CIAS) 218 - Maranata
+(CIAS) 67 - Maravilha é o amor de Deus
+(CIAS) 132 - Meu barco e pequeno
+(CIAS) 121 - Meu barquinho
+(CIAS) 130 - Meu bom pastor é Cristo
+(CIAS) 01 - Meu Deus, meu Pai
+(CIAS) 42 - Minha vida e meu coração
+(CIAS) 237 - Muitos motivos tenho
+(CIAS) 39 - Na areia não quero construir (Firme, sim!)
+(CIAS) 233 - Na cidade de Davi nasceu o Salvador
+(CIAS) 194 - Na nova Jerusalém
+(CIAS) 137 - Não por força
+(CIAS) 152 - Nas batalhas sou um vencedor (Armadura de Deus)
+(CIAS) 66 - Nasceu um novo dia
+(CIAS) 123 - Nesta batalha não tereis de pelejar
+(CIAS) 85 - Neste dia especial
+(CIAS) 104 - No caminho ele me guiará
+(CIAS) 158 - No caminho eu quero estar
+(CIAS) 206 - No céu um dia nós vamos morar
+(CIAS) 184 - No expresso viajamos
+(CIAS) 99 - No meu coração
+(CIAS) 37 - No meu coração há um tesouro (Príncipe da vida)
+(CIAS) 151 - No princípio era o verbo
+(CIAS) 214 - Nós receberemos lá no céu
+(CIAS) 170 - Nós somos a carta de Cristo
+(CIAS) 149 - Nós somos uma voz
+(CIAS) 186 - Nossas vidas são mudadas
+(CIAS) 144 - Nova aliança
+(CIAS) 124 - O céu e a terra passarão
+(CIAS) 70 - O dia do Senhor virá (O sol da justiça)
+(CIAS) 198 - O dia está chegando
+(CIAS) 203 - O tio de escarlata é o mistério
+(CIAS) 59 - O nome do meu Senhor
+(CIAS) 240 - O Senhor dos exércitos está aqui
+(CIAS) 78 - O Senhor é a minha luz e a minha salvação
+(CIAS) 87 - O Senhor é o bom Pastor
+(CIAS) 114 - O Senhor é quem cuida de mim
+(CIAS) 65 - Onde nasceu Jesus?
+(CIAS) 25 - Onde quer que tu fores irei, Jesus
+(CIAS) 220 - Onde vive o Rei da glória?
+(CIAS) 129 - Ontem, hoje e para sempre
+(CIAS) 179 - Orar faz bem
+(CIAS) 211 - Os dias estão passando
+(CIAS) 173 - Ouço o clamor do bom Pastor
+(CIAS) 16 - Pai Celeste
+(CIAS) 02 - Pai, estou a te clamar
+(CIAS) 223 - Pai, tua beleza me admira
+(CIAS) 06 - Perdoa—me, Senhor
+(CIAS) 12 - Perdoa-me, Senhor, segundo o seu amor
+(CIAS) 120 - Poderá cantar
+(CIAS) 32 - Príncipe da Paz
+(CIAS) 13 - Purificado com sangue estou
+(CIAS) 19 - Quando Davi ao Senhor orava
+(CIAS) 17 - Quando falo com Deus
+(CIAS) 23 - Quando Israel saiu do Egito
+(CIAS) 20 - Quando oro ao Senhor
+(CIAS) 81 - Quando ouvi Jesus me chamar
+(CIAS) 172 - Quatro coisas tão pequeninas
+(CIAS) 141 - Quem irá? (Preciosa semente)
+(CIAS) 84 - Queres ser feliz?
+(CIAS) 155 - Quero estar em tua presença, o Deus
+(CIAS) 40 - Quero ouvir (Meu querer)
+(CIAS) 35 - Quero ser como Davi
+(CIAS) 180 - Quero ser fiel (Jesus está vivo)
+(CIAS) 165 - Quero ser santo para o Senhor
+(CIAS) 182 - Quero viver para sempre com Jesus
+(CIAS) 145 - Revelação abre pra você
+(CIAS) 21 - Santo, justo, Príncipe da vida
+(CIAS) 209 - Se eu falo do grande amor do Pai
+(CIAS) 212 - Sei que Cristo voltará
+(CIAS) 61 - Sei que na cruz seu sangue verteu
+(CIAS) 234 - Sei que sou amado do meu Salvador
+(CIAS) 236 - Senhor Deus, tu és varão de guerra
+(CIAS) 235 - Senhor, eu te louvarei
+(CIAS) 159 - Servo do Senhor eu sou
+(CIAS) 169 - Sete cartas
+(CIAS) 52 - Seu nome é maravilhoso
+(CIAS) 216 - Sobre as nuvens descerá (Ele virá)
+(CIAS) 201 - Sobre as nuvens Jesus vem
+(CIAS) 116 - Sobre as ondas
+(CIAS) 156 - Somos cidadãos do céu
+(CIAS) 96 - Sonhei com Jesus esta noite
+(CIAS) 43 - Sou feliz!
+(CIAS) 171 - Sou o Santo
+(CIAS) 44 - Sou servo do Senhor
+(CIAS) 138 - Sou um soldado do bom Salvador
+(CIAS) 28 - Sou uma criança feliz
+(CIAS) 14 - Te suplico, ó Deus, em oração
+(CIAS) 63 - Tem bom ãnimo, pobre pecador
+(CIAS) 91 - Tenho algo pra você
+(CIAS) 47 - Tenho no meu coração`;
+
+        let hinosArray = [];
+
+        // 1. Configurar o carregamento inicial
+        window.onload = function() {
+            // Preenche a data
+            const dataSpan = document.getElementById('data-atual');
+            const hoje = new Date();
+            const dia = String(hoje.getDate()).padStart(2, '0');
+            const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+            const ano = hoje.getFullYear();
+            dataSpan.textContent = `${dia}/${mes}/${ano}`;
+
+            // Processa a lista de hinos
+            hinosArray = listaBruta.split('\n').map(h => h.trim()).filter(h => h.length > 0);
+
+            // Configura o evento de digitação na barra de pesquisa
+            const inputBusca = document.getElementById('busca-hino');
+            inputBusca.addEventListener('input', atualizarSugestoes);
+
+            // Configura o evento para atualizar o nome da igreja em tempo real
+            const inputIgreja = document.getElementById('nome-igreja-input');
+            const subIgrejaDisplay = document.getElementById('sub-igreja-display');
+            inputIgreja.addEventListener('input', function() {
+                const valor = inputIgreja.value.trim();
+                if (valor) {
+                    subIgrejaDisplay.textContent = ' - ' + valor;
+                } else {
+                    subIgrejaDisplay.textContent = '';
+                }
+            });
+
+            // Fecha as sugestões se clicar fora
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    document.getElementById('sugestoes-lista').style.display = 'none';
+                }
+            });
+        };
+
+        // Função para atualizar as sugestões com ordem decrescente e exato no topo
+        function atualizarSugestoes() {
+            const input = document.getElementById('busca-hino');
+            const termo = input.value.trim().toLowerCase();
+            const listaDiv = document.getElementById('sugestoes-lista');
+            
+            listaDiv.innerHTML = '';
+
+            if (!termo) {
+                listaDiv.style.display = 'none';
+                return;
+            }
+
+            // Filtra os hinos que correspondem ao termo digitado
+            let filtrados = hinosArray.filter(hino => hino.toLowerCase().includes(termo));
+
+            // Se o termo digitado for estritamente um número, aplica a regra de colocar o número exato no topo e o restante decrescente
+            if (/^\d+$/.test(termo)) {
+                let exato = null;
+                let outros = [];
+
+                filtrados.forEach(hino => {
+                    // Extrai o número inicial do hino para comparação exata
+                    const match = hino.match(/^(\d+)/);
+                    if (match && match[1] === termo) {
+                        exato = hino;
+                    } else {
+                        outros.push(hino);
+                    }
+                });
+
+                // Ordena os outros em ordem decrescente baseada no número
+                outros.sort((a, b) => {
+                    const numA = parseInt(a.match(/^(\d+)/)?.[1] || 0);
+                    const numB = parseInt(b.match(/^(\d+)/)?.[1] || 0);
+                    return numB - numA;
+                });
+
+                filtrados = [];
+                if (exato) filtrados.push(exato);
+                filtrados = filtrados.concat(outros);
+            } else {
+                // Para textos gerais, mantém ordenação padrão ou alfabética/decrescente se preferir
+                filtrados.sort((a, b) => b.localeCompare(a));
+            }
+
+            if (filtrados.length === 0) {
+                listaDiv.style.display = 'none';
+                return;
+            }
+
+            // Cria os elementos visuais da lista suspensa
+            filtrados.forEach(hino => {
+                const item = document.createElement('div');
+                item.className = 'sugestao-item';
+                item.textContent = hino;
+                item.onclick = function() {
+                    input.value = hino;
+                    listaDiv.style.display = 'none';
+                };
+                listaDiv.appendChild(item);
+            });
+
+            listaDiv.style.display = 'block';
+        }
+
+        // 2. Adicionar Hino da Pesquisa para a Tabela
+        function adicionarHino() {
+            const input = document.getElementById('busca-hino');
+            const valor = input.value.trim();
+            document.getElementById('sugestoes-lista').style.display = 'none';
+            
+            if (!valor) return; // Se estiver vazio, não faz nada
+
+            // Separa o Número do Nome (Ex: "622 - Nome do Hino" ou "(CIAS) 146 - Nome")
+            const indexHifen = valor.indexOf(' - ');
+            let numero = valor;
+            let nome = '';
+
+            if (indexHifen !== -1) {
+                numero = valor.substring(0, indexHifen).trim();
+                nome = valor.substring(indexHifen + 3).trim();
+            }
+
+            // Procura a primeira linha vazia na tabela
+            const linhas = document.querySelectorAll('#tabela-corpo tr');
+            let adicionou = false;
+
+            for (let linha of linhas) {
+                const celulas = linha.querySelectorAll('td');
+                if (celulas[0].textContent.trim() === '' && celulas[1].textContent.trim() === '') {
+                    celulas[0].textContent = numero;
+                    celulas[1].textContent = nome;
+                    adicionou = true;
+                    break;
+                }
+            }
+
+            if (!adicionou) {
+                alert("A lista está cheia! Limpe-a ou apague um item antes de adicionar outro.");
+            } else {
+                input.value = ''; // Limpa a barra de pesquisa
+            }
+        }
+
+        // 3. Limpar a tabela
+        function limparLista() {
+            const celulas = document.querySelectorAll('td[contenteditable="true"]');
+            celulas.forEach(celula => celula.textContent = '');
+        }
+
+        // 4. Salvar Imagem
+        async function salvarImagem(e) {
+            const elemento = document.getElementById('lista-louvores');
+            const btn = e.currentTarget;
+            const textoOriginal = btn.textContent;
+            btn.textContent = "Baixando...";
+            btn.disabled = true;
+
+            try {
+                const canvas = await html2canvas(elemento, { scale: 2, backgroundColor: "#ffffff" });
+                canvas.toBlob((blob) => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'lista_louvores.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, 'image/png');
+            } catch (error) {
+                console.error("Erro ao salvar imagem: ", error);
+                alert("Houve um erro ao salvar a imagem.");
+            } finally {
+                btn.textContent = textoOriginal;
+                btn.disabled = false;
+            }
+        }
+
+        // 5. Compartilhar
+        async function exportarECompartilhar(e) {
+            const elemento = document.getElementById('lista-louvores');
+            const btn = e.currentTarget;
+            const textoOriginal = btn.textContent;
+            btn.textContent = "Gerando...";
+            btn.disabled = true;
+
+            try {
+                const canvas = await html2canvas(elemento, { scale: 2, backgroundColor: "#ffffff" });
+                canvas.toBlob(async (blob) => {
+                    const file = new File([blob], "lista_louvores.png", { type: "image/png" });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: 'Lista de Louvores',
+                                text: 'Segue a lista de louvores!'
+                            });
+                        } catch (error) {
+                            console.log("Compartilhamento cancelado ou não suportado.");
+                        }
+                    } else {
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = 'lista_louvores.png';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        alert("A imagem foi baixada para o seu dispositivo!");
+                    }
+                }, 'image/png');
+            } catch (error) {
+                console.error("Erro ao gerar imagem: ", error);
+                alert("Houve um erro ao gerar a imagem.");
+            } finally {
+                btn.textContent = textoOriginal;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
