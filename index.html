@@ -196,7 +196,7 @@
         }
 
         .sub-header .data-text {
-            text-decoration: underline;
+            text-decoration: none; /* Sublinhado removido */
         }
 
         /* Tabela */
@@ -296,7 +296,7 @@
             
             <div class="sub-header">
                 <span>LOUVORES</span>
-                <span>Data: <span id="data-atual" class="data-text"></span></span>
+                <span><span id="data-atual" class="data-text"></span></span>
             </div>
 
             <table>
@@ -321,7 +321,7 @@
     </div>
 
     <script>
-        // LISTA COMPLETA DE LOUVORES (Gerada a partir do seu texto)
+        // LISTA COMPLETA DE LOUVORES
         const listaBruta = `
 1 - O sangue de Jesus
 2 - O sangue de Jesus tem poder para salvar
@@ -1365,11 +1365,13 @@
         window.onload = function() {
             // Preenche a data
             const dataSpan = document.getElementById('data-atual');
+            const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
             const hoje = new Date();
+            const nomeDia = diasSemana[hoje.getDay()];
             const dia = String(hoje.getDate()).padStart(2, '0');
             const mes = String(hoje.getMonth() + 1).padStart(2, '0');
             const ano = hoje.getFullYear();
-            dataSpan.textContent = `${dia}/${mes}/${ano}`;
+            dataSpan.textContent = `${nomeDia}, ${dia}/${mes}/${ano}`;
 
             // Processa a lista de hinos
             hinosArray = listaBruta.split('\n').map(h => h.trim()).filter(h => h.length > 0);
