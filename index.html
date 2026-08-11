@@ -323,965 +323,1041 @@
     <script>
         // LISTA COMPLETA DE LOUVORES (Gerada a partir do seu texto)
         const listaBruta = `
-622 - A beleza da tua santidade
-593 - A Cristo coroai
-614 - A Deus demos glória
-607 - A Deus seja o louvor
-722 - A Deus, supremo Criador
-682 - A Jesus seja dada toda glória
-402 - A lei do Senhor é perfeita
-641 - A luz do mundo
-35 - A meu Senhor
-624 - A minh'alma engrandece
-103 - A minh'alma estava longe do caminho do céu
-183 - A minha alegria
-174 - A minha herança é o Senhor
-422 - A minha herança
-449 - A minha vida entrego
-109 - A minha vida tão vazia
-753 - A noiva e a igreja
-278 - A nova do evangelho
-421 - A obra do Senhor é perfeita
-251 - A paz que tu procuras
-717 - A terra semeamos
-677 - A ti, que habitas entre os querubins
-450 - A tua justiça
-446 - A tua palavra
-559 - A última trombeta soará
-734 - A vida de minh'alma
-316 - A vida no mundo é cruel
-768 - A vitória desta igreja é oração
-396 - Abba Pai
-773 - Abra a porta, venha ver
-646 - Agradecidos somos a ti
-276 - Ainda que os seus sonhos
-475 - Ainda uma vez (Ageu)
-653 - Aleluia (Sl 113)
-592 - Aleluia! Muitas vozes de anjos
-535 - Além do céu azul
-41 - Além do véu eu quero estar
-510 - Alerta povo, está chegando a nossa hora
-379 - Algemado por um peso
-293 - Alma cansada
-167 - Amo ao meu Senhor
-405 - Amo ao Senhor de todo o meu coração
-122 - Amo ao Senhor porque ele me ouviu
-689 - Amor, que por amor desceste!
-521 - Ao chegar ao céu gozo eu terei
-590 - Ao Cordeiro
-691 - Ao Deus de Abraão
-616 - Ao Deus de amor e de imensa bondade
-712 - Ao findar o labor desta vida (A última hora)
-543 - Ao lado de Deus
-542 - Ao lado de Jesus eu quero estar
-601 - Ao que está no trono
-292 - Ao sentir o mundo ao meu redor
-46 - Ao sentir o teu perdão
-403 - Aquele que tem os meus mandamentos
-380 - Posso sentir o seu toque em mim (Glorifica)
-790 - Aquele que habita no esconderijo
-287 - Não tinha parecer
-787 - Ardendo em fogo minh'alma está
-541 - Arrebatado fui no dia do Senhor
-720 - As grutas, as rochas imensas (Um hino ao Senhor)
-366 - As lágrimas falam, Jesus te escuta
-193 - As muitas águas não poderiam apagar
-140 - As muitas águas
-114 - As riquezas do mundo
-701 - As tuas mãos dirigem meu destino
-131 - Às vezes, alguém me pergunta
-481 - Assim como a noite espera pelo dia
-58 - Atende a voz do meu clamor
-84 - Atende, Senhor, a minha oração
-329 - Atua em nosso meio
-719 - Avante, avante, ó crentes
-288 - Basta dizeres o que queres
-304 - Basta que me toques, Senhor
-60 - Bem de manhã, embora o céu sereno
-384 - Bem sei que tudo podes
-94 - Bendita a hora de oração
-22 - Bendito seja o Cordeiro
-665 - Bendizei ao Senhor
-320 - Bom é o Senhor
-508 - Breve no céu Jesus há de aparecer
-534 - Breve voltará o Messias
-64 - Brilhe sobre mim
-95 - Buscar-me-eis
-97 - Buscou-me com ternura
-82 - Cada instante
-391 - Cantarei a bondade e a justiça
-390 - Cantarei a misericórdia
-582 - Cantarei ao amor dos amores
-618 - Cantarei ao meu Senhor enquanto eu viver
-780 - Cantarei, cantarei as misericórdias
-597 - Cantarei, cantarei hosana (Viva o Rei)
-713 - Careço de Jesus
-469 - Castelo forte
-659 - Celebrai com júbilo ao Senhor
-488 - Certa vez, ao orar
-776 - Certa vez eu orando
-215 - Certo homem tão nobre
-456 - Chuvas de bênçãos teremos
-5 - Clamando estou
-15 - Clamarei, clamarei
+1 - O sangue de Jesus
+2 - O sangue de Jesus tem poder para salvar
 3 - Clamo a ti
-96 - Com a minha voz clamo ao Senhor (Sl 142)
-714 - Com tua mão segura bem a minha (Amparo Divino)
-692 - Comigo habita, ó Deus!
-169 - Como a flor do campo
-271 - O caminho que nos leva ao céu é Jesus
-777 - Como as águas
-430 - Como Cristo ensinou
-117 - Como desistir deste grande amor?
-182 - Como é bom servir ao Senhor
-573 - Como é bom te adorar
-493 - Como foi para o céu, Jesus Cristo há de vir
-401 - Como tu queres
-78 - Como um bom Pastor
-378 - Confia e ora
-344 - Confio em Deus
-44 - Conforme a tua infinita graça
-328 - Consolai, consolai o meu povo
-767 - Conta pra Jesus onde é a tua dor
+4 - Quando te prostrares
+5 - Clamando estou
+6 - Jesus, ó meu Jesus
+7 - Nesta hora em oração
+8 - Pelo sangue de Jesus
+9 - Senhor, me chego a ti
+10 - Vamos lavar as vestes
+11 - Reveste, Senhor, teu povo
+12 - Há vitória para mim
+13 - Põe teu sangue sobre mim
+14 - Em teu altar, Senhor
+15 - Clamarei, clamarei
+16 - Se andarmos na luz
+17 - Em tua presença entramos
+18 - Prostrado estou diante de ti
+19 - Teu povo clama
+20 - O teu pecado tu queres deixar?
+21 - Nesta hora de clamor
+22 - Bendito seja o Cordeiro
+23 - Senhor, ouve a minha oração
+24 - Eis o Cordeiro de Deus
+25 - Senhor, a ti clamo
+26 - Seja só o Senhor louvado aqui
 27 - Cordeiro eterno
-645 - Coroai
-211 - Cortaram o madeiro
-213 - Cristo caminhava em direção à cruz
-261 - Cristo caminhava lentamente
-147 - Cristo é tudo para mim
-151 - Cristo Jesus é o meu bom Salvador
-53 - O sangue do Cordeiro de Deus
-354 - Cristo me dará
-723 - Cristo pode hoje vir (Oh! Dia alegre!)
-498 - Cristo vem me buscar
-142 - Cristo, meu Mestre, sempre há de amar-me
-153 - Cristo, nome mais alto
-36 - Crucificado foi meu Jesus
 28 - O poder do sangue de Jesus
-690 - Da igreja o fundamento é Cristo (A Pedra fundamental)
-555 - Da linda pátria
-613 - Dai glória a Deus
-364 - Dá-me mais fé
+29 - Transborda-me, Senhor
+30 - Oh! Que precioso sangue
+31 - Junto a ti suplico, ó Pai
+32 - O sangue de Jesus, vertido ali na cruz
+33 - Eu me prostro em teu altar
+34 - Quando buscamos
+35 - A meu Senhor
+36 - Crucificado foi meu Jesus
+37 - Nesta hora esqueço o mundo
+38 - Pelo sangue de Jesus irei clamar
+39 - Jesus, tu és o meu Deus
+40 - Oh! Que sangue poderoso
+41 - Além do véu eu quero estar
+42 - Senhor, suplico a ti em oração
+43 - Vou clamar
+44 - Conforme a tua infinita graça
+45 - Nos átrios do Senhor entramos
+46 - Ao sentir o teu perdão
+47 - É teu sangue
+48 - Pelo sangue de Jesus eu vou clamar
+49 - Na hora em que eu quiser falar com Deus
+50 - O sangue de Jesus
+51 - O Cordeiro que na cruz morreu
+52 - Escuta-me, Senhor
+53 - O sangue do Cordeiro de Deus
+54 - Há vitória sempre em ti, Senhor
+55 - Senhor, meu Deus e Pai
+56 - Vitória sobre vitória
+57 - Em fervente oração
+58 - Atende a voz do meu clamor
+59 - Se orarmos ao Senhor
+60 - Bem de manhã, embora o céu sereno
+61 - Suba a minha oração
+62 - No silêncio da noite
+63 - Invoca-me e te responderei
+64 - Brilhe sobre mim
+65 - Quando o dia amanhece
+66 - De madrugada eu busco a face do Senhor
+67 - Toca pela fé
+68 - Lá no cimo do monte
+69 - O anjo do Senhor está passeando
+70 - Preciosas são as horas
+71 - Vem, amado meu
+72 - É preciso confiar e buscar a Deus
+73 - Deus está no templo
+74 - Sei, Senhor
+75 - Sente em tua face o roçar
+76 - Nesta noite feliz
+77 - Vem, visita tua igreja
+78 - Uma voz mansa e delicada
+79 - Deus está presente entre pecadores como nós
+80 - Vives muito além do céu
+81 - Grande Deus, único Deus
+82 - Cada instante
+83 - Mais uma vez
+84 - Atende, Senhor, a minha oração
+85 - Envia a tua luz
+86 - Em teu nome
+87 - Meu pecado resgatado
 88 - Das profundezas
 89 - Das profundezas clamo a ti, ó Senhor!
-66 - De madrugada eu busco a face do Senhor
-750 - Deixa a glória de Deus brilhar
-239 - Deixa Deus falar ao teu coração
-353 - Deixa-me chorar
-217 - Deixou o esplendor de sua glória
-189 - Dependo de ti, Senhor
-440 - Derramarei meu Espírito
-175 - Desde o dia em que te conheci
-706 - Deste mundo escravo fui (Grandes coisas fez o Senhor por nós)
-208 - Deus amou o mundo de tal maneira
-359 - Deus é nosso amparo, nossa fortaleza
-207 - Deus enviou seu filho amado
-778 - Deus está aqui
-73 - Deus está no templo
-260 - Deus está presente aqui neste lugar
-79 - Deus está presente entre pecadores como nós
-323 - Deus está presente sempre pronto a nos ajudar
-209 - Deus o seu Filho enviou
-362 - Deus proverá
-340 - Deus te guardará
-715 - Deus vos guarde pelo seu poder
-625 - Digno é Jesus
-445 - Dirige-me, Senhor
-564 - Dispõe-te, resplandece
-338 - Divino companheiro
-760 - Do céu virá
-486 - Do norte vem o áureo esplendor
-214 - Dois discípulos no caminho de Emaús
-693 - Dormindo no meu leito (Jerusalém, cidade santa)
-164 - É bastante para mim a tua graça
-745 - É Deus quem nos tem dado a vitória
-145 - É o amor de Deus
-72 - É preciso confiar e buscar a Deus
-459 - É tempo, é tempo
-47 - É teu sangue
-679 - Eis a escrava resgatada
-330 - Eis aí o dia aceitável
-409 - Eis marchamos para aquele bom país
-237 - Eis mensagem do Senhor
-24 - Eis o Cordeiro de Deus
-466 - Eis o estandarte
-724 - Eis os milhões
-727 - Eis que abro a porta
-222 - Eis que estou à porta e bato
-408 - Eis que surge um povo forte
-198 - Ele é a minha alegria
-159 - Ele é a rosa de Sarom
-684 - Ele é o Rei dos reis
-491 - Ele um dia voltará
-490 - Ele voltará pra buscar a sua igreja
-492 - Ele voltará, sim, ele voltará
-489 - Em breve escutarei
-544 - Em breve o dia chegará
-509 - Em breve, mui breve
-57 - Em fervente oração
-297 - Em me vindo o temor
-135 - Em meu coração
-345 - Em nada ponho a minha fé
-642 - Em nossos lábios
-14 - Em teu altar, Senhor
-86 - Em teu nome
-181 - Em ti eu encontro, ó Deus, toda paz
-17 - Em tua presença entramos
 90 - Em tuas mãos, Senhor
-180 - Encontrei o grande amor
-716 - Enquanto, ó Salvador, teu livro ler
-228 - Entrega o teu caminho ao Senhor
-398 - Entrei no tempo de Deus
-635 - Entronizado está entre as nações
-85 - Envia a tua luz
-224 - Era um pecador, andava sem Jesus
-161 - Era uma oliveira
-596 - És majestade
-661 - És o mais formoso, Jesus
-429 - És o pão da vida
-52 - Escuta-me, Senhor
-368 - Esforça-te, tem bom ânimo!
-348 - Espera no Senhor, anima-te
-436 - Espírito do trino Deus
-441 - Espírito Santo, ó consolador
-758 - Esta alegria não vai mais sair
-514 - Esta é a voz, a voz do meu amado
-476 - Esta obra é de Deus
-136 - Esta paz que sinto em minh'alma
-620 - Estamos aqui, ó Deus
-557 - Este mundo jamais pode me separar
-281 - Este mundo não tem a sua paz
-289 - Estende tua mão
-700 - Estevão avistou (Eu também quero ver)
-127 - Estou a caminhar
-752 - Estou alegre
-785 - Estou confiando
-528 - Eu avisto uma terra feliz
-707 - Eu confio em ti, Senhor
-244 - Eu desci para o vale de bênção e paz
-480 - Eu espero, ansioso, por meu Deus
-133 - Eu estava só, sem o Senhor
-751 - Eu louvarei, eu louvarei
-326 - Eu não saberia caminhar
-674 - Eu não sei qual será meu louvor
-529 - Eu ouvi da formosa cidade
-725 - Eu perdido pecador
-623 - Eu quero cantar de gozo e de paz
-191 - Eu quero sentir
-392 - Eu quero ser, Senhor
-170 - Eu sou tão feliz com o meu Jesus
-160 - Eu sou do meu amado e ele me tem afeição
-324 - Eu sou pobre e necessitado
-584 - Eu te amo, meu Jesus
-739 - Eu tenho um tesouro
-740 - Eu tenho um Deus mui, mui, mui grande
-407 - Eu vi o Senhor
-146 - Existe um alguém que cuida de mim
-522 - Existe um lar
-395 - Fala, Jesus querido
-350 - Faz-me inabalável
-129 - Felicidade é ter Cristo ao meu lado
-783 - Feliz, feliz eu sou
-536 - Finda a lida terreal
-347 - Firme nas promessas
-435 - Fluirá como um rio
-585 - Fonte da vida
-230 - Fonte de águas vivas
-577 - Glória e aleluia
-591 - Glória pra sempre ao Cordeiro de Deus
-738 - Glória, glória
-634 - Glorioso és, Jesus
-115 - Graças dou, ó Senhor
-195 - Grande amor, ó grande amor
-81 - Grande Deus, único Deus
-654 - Grande é o Senhor e mui digno de ser louvado
-656 - Grande é o Senhor
-705 - Grandes são, Senhor, os teus feitos! (Gratidão)
-162 - Grandioso para mim
-280 - Há hoje alguém esperando
-299 - Há momentos que as palavras não resolvem
-138 - Há sempre alguém que não provou
-468 - Há tanta terra
-322 - Há um amigo sempre junto
-434 - Há um doce Espírito aqui
-525 - Há um lindo país
-538 - Há um lugar pra mim
-588 - Há um nome que reluz
-418 - Há um povo que te adora
-443 - Há um rio de águas vivas
-155 - Há un ser que vive em mim
-598 - Há um só que é digno
-202 - Há uma fonte aberta no Calvário
-397 - Há uma luz a brilhar
-419 - Há uma obra que Deus quer fazer
-12 - Há vitória para mim
-54 - Há vitória sempre em ti, Senhor
-578 - Hoje o Senhor derramou
-197 - Hoje quero somente agradecer
-788 - Igreja, tu vais subir
-457 - Instrumento em tuas mãos
-63 - Invoca-me e te responderei
-108 - Israel saiu do Egito
-243 - Já achei uma flor gloriosa
-382 - Já cheguei até aqui (Vitórias)
-132 - Já não estou sozinho
-517 - Já não tarda o amanhecer
-570 - Já refulge a glória eterna (Vencendo vem Jesus!)
-694 - Jerusalém eterna
-695 - Jerusalém excelsa
-531 - Jerusalém, Jerusalém
-554 - Jerusalém (Suas ruas de ouro)
-120 - Jesus Cristo mudou meu viver
-683 - Jesus Cristo voltará
-511 - Jesus Cristo voltará com seu grande esplendor
-611 - Jesus, Deus santo, santo, santo!
-370 - Jesus é a rocha inabalável
-225 - Jesus é melhor, sim, que ouro e bens
-746 - Jesus é o amigo melhor
-268 - Jesus é o Cordeiro
-763 - Jesus é tudo pra mim
-545 - Jesus está às portas
-149 - Jesus fez a promessa
-205 - Jesus ia seguindo
-203 - Jesus ia subindo o monte
-794 - Jesus libertou
-589 - Jesus tão belo
-638 - Jesus veio e salvou-me
-569 - Jesus vem! Vem nos buscar!
-113 - Jesus, a luz divina
 91 - Jesus, a minh'alma tem sede de ti
-144 - Jesus, agora eu bem sei
-221 - Jesus, em tua presença
-192 - Jesus, Jesus, eu te amo
-119 - Jesus, nome precioso
-158 - Jesus, o lírio dos vales
-6 - Jesus, ó meu Jesus
-406 - Jesus, o que eu mais quero no mundo
-404 - Jesus, quero amar-te
-185 - Jesus, Senhor, me chego a ti (Eu venho como estou)
-497 - Jesus, sim, vem, do céu em glória ele vem
-600 - Jesus, te entronizamos
-599 - Jesus, te entronizamos aqui entre nós
-39 - Jesus, tu és o meu Deus
-31 - Junto a ti suplico, ó Pai
-539 - Junto ao trono de Deus, preparado
-667 - Justo és, Senhor
-565 - Lá está o meu tesouro
-523 - Lá no céu os anjos cantam
-765 - Lá no céu todos cantam aleluia
-68 - Lá no cimo do monte
-383 - Lá onde eu não posso ver (A oração)
-265 - Leva tu contigo o nome
-652 - Levantai-vos, ó portais eternos
-526 - Lindo! Lindo! Lindo!
-93 - Logo de manhã
-636 - Louvai a Jesus
-663 - Louvai ao Senhor todas as nações
-655 - Louvai, servos do Senhor
-644 - Louvamos-te, ó Deus
-792 - Louvando a Deus (At 2.47)
-603 - Louvarei ao meu Senhor
-615 - Louvor e glória
-442 - Mais do teu Santo Espírito
-152 - Mais perto de Jesus
-319 - Mais perto quero estar
-83 - Mais uma vez
-595 - Majestade, glória e majestade
-165 - Maravilhosa graça
-102 - Maravilhoso e sublime pra mim
-549 - Maravilhoso será
-658 - Meditarei nas maravilhas do Senhor
-306 - Medo tens que o tentador te vá vencer?
-793 - Mesa preparada
-310 - Mestre, o mar se revolta
-241 - Meu amado filho
-732 - Meu coração contente está
-255 - Meu coração engrandece ao Senhor (Cântico de vitória!)
-381 - Meu Deus vence batalhas
-87 - Meu pecado resgatado
-672 - Meu servo, não temas
-473 - Minha porção
-204 - Morri na cruz por ti
-639 - Motivos tenho pra louvar-te
-632 - Muitos anjos louvam
-372 - Muitos são os que confiam
-731 - Na casa de meu Pai não há tristeza
-675 - Na eternidade
-594 - Na expressão deste louvor
-49 - Na hora em que eu quiser falar com Deus
-556 - Na nova Jerusalém irei morar
-789 - Na presença de Jesus
-696 - Na terra abençoada
-335 - Não desanimes! Deus proverá
-176 - Não existe outro amor igual ao teu, Senhor
-220 - Não há amor igual
-361 - Não há Deus acima do Senhor
-741 - Não há Deus tão grande como tu
-256 - Não mais vivo eu, mas Cristo vive em mim
-563 - Não se turbem os vossos corações
-139 - Não sei por que de Deus o amor
-494 - Não sei quando Cristo Jesus há de vir
-269 - Não sei se ouviste falar
-365 - Não temas, pois te escolhi (Quando pelas águas)
-518 - Não terei mais tristezas
-287 - Não tinha parecer
-496 - Não vai tardar
-548 - Nas lindas moradas
-298 - Nem sempre entendemos
-21 - Nesta hora de clamor
-7 - Nesta hora em oração
-37 - Nesta hora esqueço o mundo
-76 - Nesta noite feliz
-742 - No céu há janelas abertas
-766 - No dia da grande glória
-470 - No Getsêmani
-451 - No serviço do meu Rei eu sou feliz
-62 - No silêncio da noite
-520 - No trono da cidade de Deus
-45 - Nos átrios do Senhor entramos
-580 - Nos prostremos aos seus pés
-627 - Nós te adoramos, Senhor
-764 - Nós vamos lá, irmãos
-728 - Nossa gratidão
-605 - Nosso Deus e soberano
-681 - Nosso louvor
-272 - Novo caminho
-166 - Ó amado de minh'alma
-284 - O amor de Deus é grande
-141 - O amor de Deus por nós
-171 - O amor de Jesus é grande
-69 - O anjo do Senhor está passeando
-271 - O caminho que nos leva ao céu é Jesus
-762 - O céu é um lugar maravilhoso
-51 - O Cordeiro que na cruz morreu
-606 - O Criador do universo
-458 - Ó Cristo! Pão da vida
-178 - O Deus a quem servimos
-501 - O Espírito de Deus fala à sua igreja
-438 - O Espírito do Senhor está sendo derramado
-465 - O estandarte desta igreja
-196 - O grande amor do meu Senhor
-583 - O grande Deus
-571 - O grande dia está chegando
-769 - O grande relógio
-460 - Ó Jesus! Ó vera Páscoa
-587 - Ó Jesus, exaltar-te-ei
-337 - O mesmo Deus
-424 - O meu amado desceu ao seu jardim
-512 - O meu amado fala e me diz
-660 - O meu coração
-604 - O meu louvor é fruto
-710 - O meu viver é Cristo
-283 - O mundo não sabe
-733 - O nome de Jesus é doce
-673 - Ó Pai, eu queria tanto ver (Autor da minha fé)
-423 - Ó Pastor de Israel
-28 - O poder do sangue de Jesus
-111 - O povo que andava em trevas
-586 - Ó profundidade das riquezas
-495 - O que há de vir, virá
-313 - O que habita no abrigo de Deus
-290 - O que os olhos nunca viram
-332 - O Rei e eu
-2 - O sangue de Jesus tem poder para salvar
-1 - O sangue de Jesus tem poder
-50 - O sangue de Jesus
-32 - O sangue de Jesus, vertido ali na cruz
-53 - O sangue do Cordeiro de Deus
-411 - O Senhor da ceifa está chamando
-273 - O Senhor é a alegria
-305 - O Senhor é a minha luz
-357 - O Senhor é o meu Pastor (Bondade e misericórdia)
-566 - O Senhor é o meu Pastor (Maranata, Jesus vem)
-648 - O Senhor é o meu Pastor (Minh'alma cantará)
-356 - O Senhor é o meu Pastor (Refrigera a minha alma)
-358 - O Senhor é o meu Pastor (Sl 23)
-376 - O Senhor te guiará
-118 - Ó Senhor, Deus de Israel (Edifiquei uma casa)
-226 - O sentido de viver
-507 - O sol escurecerá
-20 - O teu pecado tu queres deixar?
-154 - Ó tu que habitas entre os querubins
-439 - Ó vem derramar
-650 - Ó vinde e adoremos
-626 - Oh! Contemplai
-540 - Oh! Pensai nesse lar lá do céu
-309 - Oh! Por que duvidar?
-546 - Oh! Quanto almejo estar
-427 - Oh! Quão bom e quão suave é
-110 - Oh! Quão cego andei e perdido vaguei
-264 - Oh! Que belos hinos hoje lá no céu
-30 - Oh! Que precioso sangue
-40 - Oh! Que sangue poderoso
-530 - Oh! Que saudosa lembrança
-254 - Olhai para o alto
-223 - Onde está o Cordeiro?
-98 - Onde estaria eu?
-662 - Onipotente Deus
-502 - Quando lá do céu descendo
-657 - Os céus proclamam
-467 - Os guerreiros se preparam
-343 - Os que confiam no Senhor
-375 - Os segredos do teu coração
-505 - Os seus cabelos brancos
-482 - Os sinais do fim se cumprem
-729 - Os teus anjos te exaltam
-432 - Ouço a voz do meu amado me chamar
-499 - Ouço uma voz tão suave
-236 - Ouve a voz de Jesus
-671 - Ouve, pois, Israel
-561 - Ouvi como que a voz de uma grande multidão
-708 - Ouvi no céu (Bodas do Cordeiro)
-697 - Ouvi o Salvador dizer
 92 - Pai Celeste
-206 - Pai, a ti entrego o meu espírito
-339 - Para os montes olharei
-186 - Para quem iremos nós?
-552 - Pátria minha
-125 - Pela fé eu caminho
-179 - Pela fé eu posso contemplar Jesus
+93 - Logo de manhã
+94 - Bendita a hora de oração
+95 - Buscar-me-eis
+96 - Com a minha voz clamo ao Senhor (SI 142)
+97 - Buscou-me com ternura
+98 - Onde estaria eu?
+99 - Um dia Jesus achou-me
+100 - Eu me lembro quando Jesus me tocou
+101 - Quem era eu antes de conhecer
+102 - Maravilhoso e sublime pra mim
+103 - A minha alma estava longe do caminho do céu
+104 - Vivi tão longe do Senhor
+105 - Perdi todo que ele me encontrou
 106 - Pela fé somos salvos
-416 - Pelas praias galiléias vem Jesus
-48 - Pelo sangue de Jesus eu vou clamar
-38 - Pelo sangue de Jesus irei clamar
-8 - Pelo sangue de Jesus
-307 - Pelo vale escuro seguirei Jesus
-105 - Perdido foi que ele me encontrou
+107 - Quando andava no mundo escravizado
+108 - Israel saiu do Egito
+109 - A minha vida tão vazia
+110 - Oh! Quão cego andei e perdido vaguei
+111 - O povo que andava em trevas
+112 - Uma luz brilhou em meu caminho
+113 - Jesus, a luz divina
+114 - As riquezas do mundo
+115 - Graças dou, ó Senhor
+116 - Achei salvação
+117 - Como desistir deste grande amor?
+118 - Ó Senhor, Deus de Israel (Edifiquei uma casa)
+119 - Jesus, nome precioso
+120 - Jesus Cristo mudou meu viver
+121 - Tudo, ó Cristo, a ti entrego
+122 - Amo ao Senhor porque ele me ouviu
+123 - Seguir-te-ei
 124 - Peregrinando por sobre os montes
-685 - Perfeito amor eu conheci
-13 - Põe teu sangue sobre mim
+125 - Pela fé eu caminho
+126 - Quero prosseguir
+127 - Estou a caminhar (Eu venho como estou)
+128 - Quando a mão de Deus em mim veio tocar
+129 - Felicidade é ter Cristo ao meu lado
+130 - Tenho grande gozo
+131 - Às vezes, alguém me pergunta
+132 - Já não estou sozinho
+133 - Eu estava só, sem o Senhor
+134 - Que segurança tenho em Jesus
+135 - Em meu coração
+136 - Esta paz que sinto em minh'alma
+137 - Que doce voz tem meu Senhor
+138 - Há sempre alguém que não provou
+139 - Não sei por que de Deus o amor
+140 - As muitas águas
+141 - O amor de Deus por nós
+142 - Cristo, meu Mestre, sempre há de amar-me
+143 - Se não fosse o amor
+144 - Jesus, agora eu bem sei
+145 - É o amor de Deus
+146 - Existe um alguém que cuida de mim
+147 - Cristo é tudo para mim
+148 - Uma certa vez, Jesus Cristo
+149 - Jesus fez a promessa
+150 - Vou contar-vos o que penso com meu Mestre
+151 - Cristo Jesus é o meu bom Salvador
+152 - Mais perto de Jesus
+153 - Cristo, nome mais alto
+154 - Ó tu que habitas entre os querubins
+155 - Há um ser que vive em mim
+156 - Totalmente desejável é o meu amado
+157 - Cristo é a rosa mais bela
+158 - Jesus, o lírio dos vales
+159 - Ele é a rosa de Sarom
+160 - Eu sou do meu amado e ele me tem afeição
+161 - Era uma oliveira
+162 - Grandioso para mim
+163 - Tenho uma pedra viva
+164 - É bastante para mim a tua graça
+165 - Maravilhosa graça
+166 - Ó amado de minh'alma
+167 - Amo ao meu Senhor
+168 - Tu és fiel, Senhor
+169 - Como a flor do campo
+170 - Eu sou tão feliz com o meu Jesus
+171 - O amor de Jesus é grande
+172 - Senhor, te amo, te amo
+173 - Quando Jesus um dia
+174 - A minha herança é o Senhor
+175 - Desde o dia em que te conheci
+176 - Não existe outro amor igual ao teu, Senhor
+177 - Sempre vou lembrar o que fizeste por mim
+178 - O Deus a quem servimos
+179 - Pela fé eu posso contemplar Jesus
+180 - Encontrei o grande amor
+181 - Em ti eu encontro, ó Deus, toda paz
+182 - Como é bom servir ao Senhor
+183 - A minha alegria
+184 - Redentor onipotente
+185 - Jesus, Senhor, me chego a ti (Eu venho como estou)
+186 - Para quem iremos nós?
+187 - Minh'alma tem sede de ti
+188 - Venho, Senhor, minha vida oferecer
+189 - Dependo de ti, Senhor
+190 - Todo o meu ser te ama
+191 - Eu quero sentir
+192 - Jesus, Jesus, eu te amo
+193 - As muitas águas não poderiam apagar
+194 - Quero andar em teu caminho, Senhor
+195 - Grande amor, é grande amor
+196 - O grande amor do meu Senhor
+197 - Hoje quero somente agradecer
+198 - Ele é a minha alegria
+199 - Como é bom ouvir tua voz
+200 - Eu sirvo um Deus
+201 - Seu corpo cansado pelas caminhadas
+202 - Há uma fonte aberta no Calvário
+203 - Jesus ia subindo o monte
+204 - Morri na cruz por ti
+205 - Jesus ia seguindo
+206 - Pai, a ti entrego o meu espírito
+207 - Deus enviou seu filho amado
+208 - Deus amou o mundo de tal maneira
+209 - Deus o seu Filho enviou
+210 - Um dia Jesus desceu da sua glória
+211 - Cortaram o madeiro
+212 - Rude Cruz
+213 - Cristo caminhava em direção à cruz
+214 - Dois discípulos no caminho de Emaús
+215 - Certo homem tão nobre
+216 - Somos teu povo
+217 - Deixou o esplendor de sua glória
 218 - Por amor Jesus morreu
 219 - Por amor
-245 - Por onde quer que eu vá
-770 - Por que deixar que as ânsias
-380 - Posso sentir o seu toque em mim (Glorifica)
-70 - Preciosas são as horas
-721 - Proclamai a todo o mundo que o Senhor é Rei
-308 - Profundos vales eu terei de passar
-18 - Prostrado estou diante de ti
-399 - Qual madeira
-386 - Qual o adorno desta vida?
-516 - Quando a angelical trombeta
-318 - Quando a angústia vem
-128 - Quando a mão de Deus em mim veio tocar
-726 - Когда a tempestade ruge
-301 - Quando a tristeza surgir
-515 - Quando a última trombeta ecoar
-107 - Quando andava no mundo escravizado
-363 - Quando as lutas me cercam
-34 - Quando buscamos
-453 - Quando dobro os meus joelhos em oração
-686 - Quando Jesus provou o seu amor por mim
-267 - Quando Jesus seu sangue verteu
-173 - Quando Jesus um dia
-699 - Que grande reunião convocada ali (Jesus de Nazaré)
-300 - Quando parece que tudo acabou
-567 - Quando será o grande dia
-4 - Quando te prostrares
-317 - Quando vem nos olhos uma lágrima
-455 - Quanto mais eu te conheço (Caminho feliz)
-462 - Quantos fiéis, Senhor
-664 - Quão amáveis são
-321 - Quão bondoso amigo é Cristo
-385 - Quão difícil é, Senhor (Faze-me um vencedor)
-629 - Que alegria
-786 - Que as palavras da minha boca
-748 - Que calor é este em volta do altar?
-341 - Que consolação
-137 - Que doce voz tem meu Senhor
-314 - Que importa
-134 - Que segurança tenho em Jesus
-425 - Que vista amável é
+220 - Não há amor igual
+221 - Jesus, em tua presença
+222 - Eis que estou à porta
+223 - Onde está o Cordeiro?
+224 - Era um pecador, andava sem Jesus
+225 - Jesus é melhor, sim, que ouro e bens
+226 - O sentido de viver
+227 - Só Jesus te pode dar o que procuras
+228 - Entrega o teu caminho ao Senhor
+229 - Ao poço de Jacó chegou Jesus
+230 - Fonte de águas vivas
+231 - Quem me dá água
 232 - Quem beber da água que eu lhe der
-756 - Quem cantar aqui se alegrará
-687 - Quem é como tu?
-513 - Quem é esta que aparece
-282 - Quem é que dá água ao sedento?
-101 - Quem era eu antes de conhecer
-731 - Quem me dá água
-479 - Quem me dera
-474 - Quem sou eu, Senhor?
-263 - Queres ir pra glória?
-352 - Queres neste mundo ser um vencedor?
-194 - Quero andar em teu caminho, Senhor
-279 - Quero estar ao pé da cruz
-126 - Quero prosseguir
-452 - Quero que me toques, Senhor
-262 - Quero que você conheça
-393 - Quero ser fiel ao meu Senhor
-415 - Quero ser um vaso de bênção
-374 - Quero tocar em tuas vestes, Senhor
-184 - Redentor onipotente
-527 - Regozijai-vos
-709 - Resplandece, ó Jerusalém
-576 - Reunimo-nos aqui pra te adorar
-11 - Reveste, Senhor, teu povo
-277 - Rocha eterna
-342 - Rocha minha
-360 - Rochedo forte é o Senhor
-212 - Rude cruz
-602 - Santo é o que está no trono
-628 - Santo é seu nome
-610 - Santo! Santo! Santo! Deus onipotente!
-647 - Santo, santo, santo é o Senhor
-612 - Santo, santo, santo, ó Deus de glória e poder
-630 - Saudai o nome de Jesus
-346 - Se a fé por vezes falta
-302 - Se a vida parece pesada
-247 - Se anda triste o teu viver
-16 - Se andarmos na luz
-367 - Se as lutas da vida
+233 - Vou guiar-te a uma rica fonte
+234 - Deus hoje quer te falar
+235 - Manso e suave Jesus está chamando
+236 - Ouve a voz de Jesus
+237 - Eis mensagem do Senhor
+238 - Tanto tempo já faz que o chamado divinal
+239 - Deixa Deus falar ao teu coração
 240 - Se cansado tu estás
-331 - Se Deus é por nós
-252 - Se dispuseres o teu coração (Jó 11.13-19)
-253 - Se dispuseres o teu coração
-315 - Se em profundo abismo te encontras
-246 - Se em teu viver
-249 - Se em tua vida falta paz
-274 - Se em tua vida não encontras paz e luz
+241 - Meu amado filho
 242 - Se esta noite Deus pedir tua alma
-737 - Se estás cansado
-524 - Se eu estivesse na alvorada
-631 - Sê exaltado, ó Deus
-325 - Se hoje escutares
-143 - Se não fosse o amor
-349 - Se não fosse o Senhor
-303 - Se não puderes mais
-59 - Se orarmos ao Senhor
-670 - Se paz, a mais doce
-333 - Se te encontrares triste
-258 - Se tu estás tão longe do Senhor
-270 - Se tu pediste um sinal
-250 - Se tu procuras pela paz
-373 - Se um dia Deus prometeu
+243 - Já achei uma flor gloriosa
+244 - Eu desci para o vale de bênção e paz
+245 - Por onde quer que eu vá
+246 - Se em teu viver
+247 - Se anda triste o teu viver
 248 - Se você quiser saber
-312 - Se, da vida, as vagas procelosas são
-123 - Seguir-te-ei
-500 - Sei que o Senhor
-74 - Sei, Senhor
-26 - Seja só o Senhor louvado aqui
+249 - Se em tua vida falta paz
+250 - Se tu procuras pela paz
+251 - A paz que tu procuras
+252 - Se dispuseres o teu coração (Jo 11.13-19)
+253 - Se dispuseres o teu coração
+254 - Olhai para o alto
+255 - Meu coração engrandece ao Senhor (Cântico de vitória!)
+256 - Não mais vivo eu, mas Cristo vive em mim
+257 - Tudo se fez novo
+258 - Se tu estás tão longe do Senhor
+259 - Como um bom pastor
+260 - Deus está presente neste lugar
+261 - Cristo caminhava lentamente
+262 - Quero que você conheça
+263 - Queres ir pra glória?
+264 - Oh! Que belos hinos hoje lá no céu
+265 - Leva tu contigo o nome
+266 - Todos os povos
+267 - Quando Jesus seu sangue verteu
+268 - Jesus é o Cordeiro
+269 - Não sei se ouviste falar
+270 - Se tu pediste um sinal
+271 - O caminho que nos leva ao céu é Jesus
+272 - Novo caminho
+273 - O Senhor é a alegria
+274 - Se em tua vida não encontras paz e luz
+275 - Um milagre é
+276 - Ainda que os seus sonhos
+277 - Rocha eterna
+278 - A nova do evangelho
+279 - Quero estar ao pé da cruz
+280 - Há hoje alguém esperando
+281 - Este mundo não tem a sua paz
+282 - Quem é que dá água ao sedento?
+283 - O mundo não sabe
+284 - O amor de Deus é grande
+285 - Tu que andas só e triste sem saber o caminho
+286 - Um dia eu quis te deixar
+287 - Não tinha parecer
+288 - Basta dizeres o que queres
+289 - Estende tua mão
+290 - O que os olhos nunca viram
 291 - Sempre que quiseres falarei contigo
-477 - Sempre vou lembrar
-177 - Sempre vou lembrar o que fizeste por mim
-25 - Senhor, a ti clamo
-579 - Senhor, eu nem sei contar
-448 - Senhor, eu quero servir-te
-447 - Senhor, guia-nos
-747 - Senhor, manda poder
-9 - Senhor, me chego a ti
-55 - Senhor, meu Deus e Pai
-609 - Senhor, meu Deus, quando eu maravilhado
+292 - Ao sentir o mundo ao meu redor
+293 - Alma cansada
+294 - Jesus ia caminhando (Canta meu povo)
+295 - Das profundezas a ti clamo, ó Senhor
+296 - Toda a minha dor Jesus levou
+297 - Em me vindo o temor
+298 - Nem sempre entendemos
+299 - Há momentos que as palavras não resolvem
+300 - Quando parece que tudo acabou
+301 - Quando a tristeza surgir
+302 - Se a vida parece pesada
+303 - Se não puderes mais
+304 - Basta que me toques, Senhor
+305 - O Senhor é a minha luz
+306 - Medo tens que o tentador te vá vencer?
+307 - Pelo vale escuro seguirei Jesus
+308 - Profundos vales eu terei de passar
+309 - Oh! Por que duvidar?
+310 - Mestre, o mar se revolta
+311 - Só uma voz me basta
+312 - Se, da vida, as vagas procelosas são
+313 - O que habita no abrigo de Deus
+314 - Que importa
+315 - Se em profundo abismo te encontras
+316 - A vida no mundo é cruel
+317 - Quando vem nos olhos uma lágrima
+318 - Quando a angústia vem
+319 - Mais perto quero estar
+320 - Bom é o Senhor
+321 - Quão bondoso amigo é Cristo
+322 - Há um amigo sempre junto
+323 - Deus está presente sempre pronto a nos ajudar
+324 - Eu sou pobre e necessitado
+325 - Se hoje escutares
+326 - Eu não saberia caminhar
+327 - Deus é contigo
+328 - Consolai, consolai o meu povo
+329 - Atua em nosso meio
+330 - Eis aí o dia aceitável
+331 - Se Deus é por nós
+332 - O Rei e eu
+333 - Se te encontrares triste
+334 - Deus cuida de ti
+335 - Não desanimes! Deus proverá
+336 - Há alguém que cuida de ti
+337 - O mesmo Deus
+338 - Divino companheiro
+339 - Para os montes olharei
+340 - Deus te guardará
+341 - Que consolação
+342 - Rocha minha
+343 - Os que confiam no Senhor
+344 - Confio em Deus
+345 - Em nada ponho a minha fé
+346 - Se a fé por vezes falta
+347 - Firme nas promessas
+348 - Espera no Senhor, anima-te
+349 - Se não fosse o Senhor
+350 - Faz-me inabalável
+351 - Tu és meu Rei
+352 - Queres neste mundo ser um vencedor?
+353 - Deixa-me chorar
+354 - Cristo me dará
+355 - Vencer, vencer
+356 - O Senhor é o meu Pastor (Refrigera a minha alma)
+357 - O Senhor é o meu Pastor (Bondade e misericórdia)
+358 - O Senhor é o meu Pastor (SI 23)
+359 - Deus é nosso amparo, nossa fortaleza
+360 - Rochedo forte é o Senhor
+361 - Não há Deus acima do Senhor
+362 - Deus proverá
+363 - Quando as lutas me cercam
+364 - Dá-me mais fé
+365 - Não temas, pois te escolhi (Quando pelas águas)
+366 - As lágrimas falam, Jesus te escuta
+367 - Se as lutas da vida
+368 - Esforça-te, tem bom ânimo
+369 - Quando mais ninguém te compreende
+370 - Jesus é a rocha inabalável
+371 - Toda promessa
+372 - Muitos são os que confiam
+373 - Se um dia Deus prometeu
+374 - Quero tocar em tuas vestes, Senhor
+375 - Os segredos do teu coração
+376 - O Senhor te guiará
+377 - Deus é minha rocha
+378 - Confia e ora
+379 - Algemado por um peso
+380 - Posso sentir o seu toque em mim (Glorifica)
+381 - Meu Deus vence batalhas
+382 - Já cheguei até aqui (Vitórias)
+383 - Lá onde eu não posso ver (A oração)
+384 - Bem sei que tudo podes
+385 - Quão difícil é, Senhor (Faze-me um vencedor)
+386 - Qual o adorno desta vida?
+387 - Sonda-me, ó Deus
+388 - Só tu és, Senhor
 389 - Senhor, o que é a nossa vida?
-23 - Senhor, ouve a minha oração
+390 - Cantarei a misericórdia
+391 - Cantarei a bondade e a justiça
+392 - Eu só quero ser, Senhor
+393 - Quero ser fiel ao meu Senhor
+394 - Uma voz me disse lá do céu
+395 - Fala, Jesus querido
+396 - Abba Pai
+397 - Há uma luz a brilhar
+398 - Entrei no templo de Deus
+399 - Qual madeira
+400 - Eu quero ser, Senhor amado
+401 - Como tu queres
+402 - A lei do Senhor é perfeita
+403 - Aquele que tem os meus mandamentos
+404 - Jesus, quero amar-te
+405 - Amo ao Senhor de todo o meu coração
+406 - Jesus, o que eu mais quero no mundo
+407 - Eu vi o Senhor
+408 - Eis que surge um povo forte
+409 - Eis marchamos para aquele bom país
+410 - Um pendão real vos entregou o Rei
+411 - O Senhor da ceifa está chamando
+412 - Sou forasteiro aqui
+413 - Ouvi, ó céus, e falarei
+414 - Meu Deus, meu bom Pastor
+415 - Quero ser um vaso de bênção
+416 - Pelas praias galiléias vem Jesus
+417 - Minha dedicação
+418 - Há um povo que te adora
+419 - Há uma obra que Deus quer fazer
+420 - Somos teu povo e queremos
+421 - A obra do Senhor é perfeita
+422 - A minha herança
+423 - Ó Pastor de Israel
+424 - O meu amado desceu ao seu jardim
+425 - Que vista amável é
+426 - Um corpo só, um só Espírito
+427 - Oh! Quão bom e quão suave é
+428 - Vem, ó Cristo, encher meu cálice
+429 - És o pão da vida
+430 - Como Cristo ensinou
+431 - Cristo já nos preparou
+432 - Ouço a voz do meu amado me chamar
+433 - Tomai agora o pão
+434 - Há um doce Espírito aqui
+435 - Fluirá como um rio
+436 - Espírito do trino Deus
+437 - Vem sobre mim, Espírito de Deus
+438 - O Espírito do Senhor está sendo derramado
+439 - Ó vem derramar
+440 - Derramarei meu Espírito
+441 - Espírito Santo, ó Consolador
+442 - Mais do teu Santo Espírito
+443 - Há um rio de águas vivas
+444 - Desejo ardentemente
+445 - Dirige-me, Senhor
+446 - A tua palavra
+447 - Senhor, guia-nos
+448 - Senhor, eu quero servir-te
+449 - À minha vida entrego
+450 - A tua justiça
+451 - No serviço do meu Rei eu sou feliz
+452 - Quero que me toques, Senhor
+453 - Quando dobro os meus joelhos em oração
+454 - Senhor, meu Deus, o que direi de ti? (Saúde espiritual)
+455 - Quanto mais eu te conheço (Caminho feliz)
+456 - Chuvas de bênçãos teremos
+457 - Instrumento em tuas mãos
+458 - Ó Cristo! Pão da vida
+459 - É tempo, é tempo
+460 - Ó Jesus! Ó vera Páscoa
+461 - Tu, ó Senhor, tu és tão puro de olhos (Aviva a tua obra)
+462 - Quantos fiéis, Senhor
+463 - Vem, Senhor, visita tua vinha
+464 - Tu que sobre a amarga cruz
+465 - O estandarte desta igreja
+466 - Eis o estandarte
+467 - Os guerreiros se preparam
+468 - Há tanta terra
+469 - Castelo forte
+470 - No Getsêmani
+471 - Vem, Espírito de Deus
+472 - Vinde, cantai e entoai louvores a Jesus
+473 - Minha porção
+474 - Quem sou eu, Senhor?
+475 - Ainda uma vez (Ageu)
+476 - Esta obra é de Deus
+477 - Sempre vou lembrar
+478 - Vi um novo céu
+479 - Quem me dera
+480 - Eu espero, ansioso, por meu Deus
+481 - Assim como a noite espera pelo dia
+482 - Os sinais do fim se cumprem
+483 - Chegou o tempo de pensar
+484 - Temei a Deus
+485 - Sete castiçais
+486 - Do norte vem o áureo esplendor
+487 - Vigiai e sempre orai, ó crentes
+488 - Certa vez, ao orar
+489 - Em breve escutarei
+490 - Ele voltará pra buscar a sua igreja
+491 - Ele um dia voltará
+492 - Ele voltará, sim, ele voltará
+493 - Como foi para o céu, Jesus Cristo há de vir
+494 - Não sei quando Cristo Jesus há de vir
+495 - O que há de vir, virá
+496 - Não vai tardar
+497 - Jesus, sim, vem, do céu em glória ele vem
+498 - Cristo vem me buscar
+499 - Ouço uma voz tão suave
+500 - Sei que o Senhor
+501 - O Espírito de Deus fala à sua igreja
+502 - Quando lá do céu descendo
+503 - Tenho saudades de Jesus, meu Mestre
+504 - Eu sei que Jesus
+505 - Os seus cabelos brancos
+506 - Tu que estás assentado
+507 - O sol escurecerá
+508 - Breve no céu Jesus há de aparecer
+509 - Em breve, mui breve
+510 - Alerta povo, está chegando a nossa hora
+511 - Jesus Cristo voltará com seu grande esplendor
+512 - O meu amado fala e me diz
+513 - Quem é esta que aparece
+514 - Esta é a voz, a voz do meu amado
+515 - Quando a última trombeta ecoar
+516 - Quando a angelical trombeta
+517 - Já não tarda o amanhecer
+518 - Não terei mais tristezas
+519 - Um novo lar me espera
+520 - No trono da cidade de Deus
+521 - Ao chegar ao céu gozo eu terei
+522 - Existe um lar
+523 - Lá no céu os anjos cantam
+524 - Se eu estivesse na alvorada
+525 - Há um lindo país
+526 - Lindo! Lindo! Lindo!
+527 - Regozijai-vos
+528 - Eu avisto uma terra feliz
+529 - Eu ouvi da formosa cidade
+530 - Oh! Que saudosa lembrança
+531 - Jerusalém, Jerusalém
+532 - Quando o mundo aqui deixar
+533 - Minha alma, pois, alegre canta
+534 - Breve voltará o Messias
+535 - Além do céu azul
+536 - Finda a lida terreal
+537 - Quando o Jordão passarmos unidos
+538 - Há um lugar pra mim
+539 - Junto ao trono de Deus, preparado
+540 - Oh! Pensai nesse lar lá do céu
+541 - Arrebatado fui no dia do Senhor
+542 - Ao lado de Jesus eu quero estar
+543 - Ao lado de Deus
+544 - Em breve o dia chegará
+545 - Jesus está às portas
+546 - Oh! Quanto almejo estar
+547 - Ó vem logo, Jesus
+548 - Nas lindas moradas
+549 - Maravilhoso será
+550 - Cantai, ó igreja
+551 - Tenho lido da bela cidade (A bela cidade)
+552 - Pátria minha
+553 - Vem! Maranata, Jesus vem!
+554 - Jerusalém (Suas ruas de ouro)
+555 - Da linda pátria
+556 - Na nova Jerusalém irei morar
+557 - Este mundo jamais pode me separar
+558 - Vem, Jesus Cristo já vem
+559 - A última trombeta soará
+560 - Eis que estou à porta e bato
+561 - Ouvi como que a voz de uma grande multidão
+562 - Quando meu tempo de lutas passar
+563 - Não se turbem os vossos corações
+564 - Dispõe-te, resplandece
+565 - Lá está o meu tesouro
+566 - O Senhor é o meu Pastor (Maranata, Jesus vem)
+567 - Quando será o grande dia
 568 - Senhor, quem são aqueles
+569 - Jesus vem! Vem nos buscar!
+570 - Já refulge a glória eterna (Vencendo vem Jesus!)
+571 - O grande dia está chegando
+572 - Cheguemos ao altar de Deus
+573 - Como é bom te adorar
+574 - Adorarei
+575 - Te adoramos
+576 - Reunimo-nos aqui pra te adorar
+577 - Glória e aleluia
+578 - Hoje o Senhor derramou
+579 - Senhor, eu nem sei contar
+580 - Nos prostremos aos seus pés
+581 - Pai de amor, gosto tanto de ti
+582 - Cantarei ao amor dos amores
+583 - Ó grande Deus
+584 - Eu te amo, meu Jesus
+585 - Fonte da vida
+586 - Ó profundidade das riquezas
+587 - Ó Jesus, exaltar-te-ei
+588 - Há um nome que reluz
+589 - Jesus tão belo
+590 - Ao Cordeiro
+591 - Glória pra sempre ao Cordeiro de Deus
+592 - Aleluia! Muitas vozes de anjos
+593 - A Cristo coroai
+594 - Na expressão deste louvor
+595 - Majestade, glória e majestade
+596 - És majestade
+597 - Cantarei, cantarei hosana (Viva o Rei)
+598 - Há um só que é digno
+599 - Jesus, te entronizamos aqui entre nós
+600 - Jesus, te entronizamos
+601 - Ao que está no trono
+602 - Santo é o que está no trono
+603 - Louvarei ao meu Senhor
+604 - O meu louvor é fruto
+605 - Nosso Deus é soberano
+606 - O Criador do universo
+607 - A Deus seja o louvor
+608 - Deus dos exércitos de Israel
+609 - Senhor, meu Deus, quando eu maravilhado
+610 - Santo! Santo! Santo! Deus onipotente!
+611 - Jesus, Deus santo, santo, santo!
+612 - Santo, santo, santo, ó Deus de glória e poder
+613 - Dai glória a Deus
+614 - A Deus demos glória
+615 - Louvor e glória
+616 - Ao Deus de amor e de imensa bondade
+617 - O meu coração se regozija no Senhor
+618 - Cantarei ao meu Senhor enquanto eu viver
+619 - Vem, derrama a paz
+620 - Estamos aqui, ó Deus
+621 - Adorar-te
+622 - A beleza da tua santidade
+623 - Eu quero cantar de gozo e de paz
+624 - A minh'alma engrandece
+625 - Digno é Jesus
+626 - Oh! Contemplai
+627 - Nós te adoramos, Senhor
+628 - Santo é seu nome
+629 - Que alegria
+630 - Saudai o nome de Jesus
+631 - Sê exaltado, ó Deus
+632 - Muitos anjos louvam
+633 - Te exaltaremos
+634 - Glorioso és, Jesus
+635 - Entronizado está entre as nações
+636 - Louvai a Jesus
+637 - Toda a terra te exalta
+638 - Jesus veio e salvou-me
+639 - Motivos tenho pra louvar-te
+640 - Meu louvor é só pra ti
+641 - A luz do mundo
+642 - Em nossos lábios
+643 - Todo louvor seja dado a Deus
+644 - Louvamos-te, ó Deus
+645 - Coroai
+646 - Agradecidos somos a ti
+647 - Santo, santo, santo é o Senhor
+648 - O Senhor é o meu Pastor (Minh'alma cantará)
+649 - Te louvamos, Senhor
+650 - Ó vinde e adoremos
+651 - Amo ao Senhor
+652 - Levantai-vos, ó portais eternos
+653 - Aleluia (Sl 113)
+654 - Grande é o Senhor e mui digno de ser louvado
+655 - Louvai, servos do Senhor
+656 - Grande é o Senhor
+657 - Os céus proclamam
+658 - Meditarei nas maravilhas do Senhor
+659 - Celebrai com júbilo ao Senhor
+660 - O meu coração
+661 - És o mais formoso, Jesus
+662 - Onipotente Deus
+663 - Louvai ao Senhor todas as nações
+664 - Quão amáveis são
+665 - Bendizei ao Senhor
+666 - Tal qual estou
+667 - Justo és, Senhor
+668 - Um pobre cego
+669 - Deus dos antigos
+670 - Se paz, a mais doce
+671 - Ouve, pois, Israel
+672 - Meu servo, não temas
+673 - O Pai, eu queria tanto ver (Autor da minha fé)
+674 - Eu não sei qual será meu louvor
+675 - Na eternidade
+676 - Ó vinde adorar
+677 - A ti, que habitas entre os querubins
+678 - Tua glória enche toda a terra
+679 - Eis a escrava resgatada
+680 - Teu nome é pra mim, Senhor
+681 - Nosso louvor
+682 - A Jesus seja dada toda glória
+683 - Jesus Cristo voltará
+684 - Ele é o Rei dos reis
+685 - Perfeito amor eu conheci
+686 - Quando Jesus provou o seu amor por mim
+687 - Quem é como tu?
+688 - Cristo já ressuscitou
+689 - Amor, que por amor desceste!
+690 - Da igreja o fundamento é Cristo (A pedra fundamental)
+691 - Ao Deus de Abraão
+692 - Comigo habita, ó Deus!
+693 - Dormindo no meu leito (Jerusalém, cidade santa)
+694 - Jerusalém eterna
+695 - Jerusalém excelsa
+696 - Na terra abençoada
+697 - Ouvi o Salvador dizer
+698 - Tua, ó Deus, é toda a grandeza
+699 - Que grande reunião convocada ali (Jesus de Nazaré)
+700 - Estevão avistou (Eu também quero ver)
+701 - As tuas mãos dirigem meu destino
+702 - Os céus em breve se abrirão
+703 - Será de manhã
 704 - Senhor, se estivesses aqui (Lázaro)
-42 - Senhor, suplico a ti em oração
-172 - Senhor, te amo, te amo
-75 - Sente em tua face o roçar
+705 - Grandes são, Senhor, os teus feitos (Gratidão)
+706 - Deste mundo escravo fui (Grandes coisas fez o Senhor por nós)
+707 - Eu confio em ti, Senhor
+708 - Ouvi no céu (Bodas do Cordeiro)
+709 - Resplandece, ó Jerusalém
+710 - O meu viver é Cristo
+711 - Tua graça me basta, ó Senhor
+712 - Ao findar o labor desta vida (A última hora)
+713 - Careço de Jesus
+714 - Com tua mão segura bem a minha (Amparo Divino)
+715 - Deus vos guarde pelo seu poder
+716 - Enquanto, ó Salvador, teu livro ler
+717 - A terra semeamos
+718 - Guia, ó Cristo, minha nau
+719 - Avante, avante, ó crentes
+720 - As grutas, as rochas imensas (Um hino ao Senhor)
+721 - Proclamai a todo o mundo que o Senhor é Rei
+722 - A Deus, supremo Criador
+723 - Cristo pode hoje vir (Oh! Dia alegre!)
+724 - Eis os milhões
+725 - Eu perdido pecador
+726 - Quando a tempestade ruge
+727 - Eis que abro a porta
+728 - Nossa gratidão
+729 - Os teus anjos te exaltam
+730 - Só tu nos fazes vencedores
 731 - Sequência de louvores nº 1
 732 - Sequência de louvores nº 2
 733 - Sequência de louvores nº 3
-703 - Será de manhã
-485 - Sete castiçais
-201 - Seu corpo cansado pelas caminhadas
+734 - A vida de minh'alma
 735 - Seu nome é Jesus
-227 - Só Jesus te pode dar o que procuras
-781 - Só o poder de Deus
-388 - Só tu és, Senhor
-730 - Só tu nos fazes vencedores
-311 - Só uma voz me basta
-755 - Somente pela fé
-216 - Somos teu povo
-420 - Somos teu povo e queremos
-387 - Sonda-me, ó Deus
-731 - Sou feliz porque sou de Cristo
-412 - Sou forasteiro aqui
-61 - Suba a minha oração
-775 - Subindo para o céu eu vou
-666 - Tal qual estou
-238 - Tanto tempo já faz que o chamado divinal
-575 - Te adoramos
-633 - Te exaltaremos
-649 - Te louvamos, Senhor
-484 - Temei a Deus
-130 - Tenho grande gozo
-551 - Tenho lido da bela cidade (A bela cidade)
-782 - Tenho nova vida
-503 - Tenho saudades de Jesus, meu Mestre
-163 - Tenho uma pedra viva
-680 - Teu nome é pra mim, Senhor
-19 - Teu povo clama
-67 - Toca pela fé
-296 - Toda a minha dor Jesus levou
-637 - Toda a terra te exalta
-371 - Toda promessa
-643 - Todo louvor seja dado a Deus
-190 - Todo o meu ser te ama
-266 - Todos os povos
-433 - Tomai agora o pão
-156 - Totalmente desejável é o meu amado
-29 - Transborda-me, Senhor
-168 - Tu és fiel, Senhor
-351 - Tu és meu Rei
-285 - Tu que andas só e triste sem saber o caminho
-506 - Tu que estás assentado
-464 - Tu que sobre a amarga cruz
-461 - Tu, ó Senhor, tu és tão puro de olhos (Aviva a tua obra)
-678 - Tua glória enche toda a terra
-711 - Tua graça me basta, ó Senhor
-698 - Tua, ó Deus, é toda a grandeza
-257 - Tudo se fez novo
-121 - Tudo, ó Cristo, a ti entrego
-426 - Um corpo só, um só Espírito
-286 - Um dia eu quis te deixar
-99 - Um dia Jesus achou-me
-210 - Um dia Jesus desceu da sua glória
-275 - Um milagre é
-519 - Um novo lar me espera
-410 - Um pendão real vos entregou o Rei
-668 - Um pobre cego
-148 - Uma certa vez, Jesus Cristo
-112 - Uma luz brilhou em meu caminho
-78 - Uma voz mansa e delicada
-394 - Uma voz me disse lá do céu
-10 - Vamos lavar as vestes
-437 - Vem sobre mim, Espírito de Deus
-553 - Vem! Maranata, Jesus vem!
-71 - Vem, amado meu
-619 - Vem, derrama a paz
-471 - Vem, Espírito de Deus
-558 - Vem, Jesus Cristo já vem
-428 - Vem, ó Cristo, encher meu cálice
-463 - Vem, Senhor, visita tua vinha
-77 - Vem, visita tua igreja
+736 - Cristo é a resposta
+737 - Se estás cansado
+738 - Glória, glória
+739 - Eu tenho um tesouro
+740 - Eu tenho um Deus mui, mui, mui grande
+741 - Não há Deus tão grande como tu
+742 - No céu há janelas abertas
 743 - Vencedor serei
-355 - Vencer, vencer
-188 - Venho, Senhor, minha vida oferecer
-478 - Vi um novo céu
-487 - Vigiai e sempre orai, ó crentes
-472 - Vinde, cantai e entoai louvores a Jesus
-103 - Vinde, meninos
 744 - Vitória Deus dará a mim, eu sei
-56 - Vitória sobre vitória
-80 - Vives muito além do céu
-104 - Vivi tão longe do Senhor
-43 - Vou clamar
-150 - Vou contar-vos o que penso do meu Mestre
-233 - Vou guiar-te a uma rica fonte
-(CIAS) 146 - A igreja que ora é vitoriosa
-(CIAS) 227 - A Jesus irei louvar
-(CIAS) 49 - A minha alegria é crescer com o meu Senhor!
-(CIAS) 205 - A minha alma espera
-(CIAS) 41 - A minha casa firme está
-(CIAS) 191 - A noiva amada do Cordeiro
-(CIAS) 202 - A Raabe veio a ordem
-(CIAS) 174 - A tua palavra e semente
-(CIAS) 199 - Aguardando a orientação do Salvador
-(CIAS) 162 - Andai na minha presença
-(CIAS) 148 - Andando em Espírito (Fruto do Espirito)
-(CIAS) 94 - Aquele que tem sede
-(CIAS) 74 - Aquilo que melhor existe
-(CIAS) 166 - Brilhando, brilhando
-(CIAS) 18 - Buscai ao Senhor
-(CIAS) 109 - Canta alegremente, ó filha de Sião
-(CIAS) 229 - Cantai alegremente a Deus
-(CIAS) 89 - Certo homem, príncipe dos judeus (Nicodemos)
-(CIAS) 150 - Cinco seixos
-(CIAS) 10 - Clama, ó igreja
-(CIAS) 11 - Clamo a ti, meu Senhor e Pai (Uma nova canção)
-(CIAS) 04 - Clamo, ó Senhor
-(CIAS) 03 - Clamo, ó Senhor, por teu sangue
-(CIAS) 131 - Com Cristo no barco
-(CIAS) 125 - Com Jesus vencedor serei
-(CIAS) 154 - Com o Espírito de Deus em minha vida
-(CIAS) 54 - Como é bom saber
-(CIAS) 46 - Como é bom servir a Deus
-(CIAS) 153 - Como Noé
-(CIAS) 142 - Como uma folha ao vento
-(CIAS) 112 - Consola-me, Espírito Santo
-(CIAS) 176 - Cria em mim, ó Deus
-(CIAS) 122 - Cristo é meu amigo
-(CIAS) 128 - Cristo é meu amigo, é meu amigo
-(CIAS) 56 - Cristo é o Senhor
-(CIAS) 127 - Cristo e vitória
-(CIAS) 100 - Cristo sente amor por mim
-(CIAS) 33 - Cristo, meu bom Mestre
-(CIAS) 163 - Dá-me um coração cheio do teu amor
-(CIAS) 164 - Dá-me um coração humilde e reto
-(CIAS) 167 - Daniel na cova dos leões
-(CIAS) 102 - Das maravilhas que a biblia contém
-(CIAS) 73 - De eternidade a eternidade
-(CIAS) 117 - Deitada na relva uma feliz ovelha
-(CIAS) 79 - Deus ama você
-(CIAS) 224 - Deus criou os céus e a terra
-(CIAS) 60 - Deus falou comigo
-(CIAS) 126 - Deus forte como Jeová
-(CIAS) 222 - Deus habita no meio dos louvores
-(CIAS) 08 - Diante do teu altar
-(CIAS) 178 - Disse Jesus aos Judeus (Eu trabalho também)
-(CIAS) 50 - Do alto céu
-(CIAS) 95 - Do pão do céu
-(CIAS) 09 - Dobro os meus joelhos
-(CIAS) 139 - Dons do Espírito Santo
-(CIAS) 53 - É bom, é bom demais
-(CIAS) 55 - É somente teu meu coração
-(CIAS) 62 - É tão triste não vera luz (O cego Bartimeu)
-(CIAS) 07 - É teu sangue, meu Senhor Jesus
-(CIAS) 215 - Eis que Jesus vem nas nuvens
-(CIAS) 51 - Eis-me aqui, Senhor em teu altar
-(CIAS) 27 - Ele é a Raiz
-(CIAS) 90 - Ele morreu, mas ressurgiu
-(CIAS) 219 - Ele vira no meio da noite
-(CIAS) 30 - Ele vive em mim
-(CIAS) 195 - Em breve estaremos na glória
-(CIAS) 147 - Em tuas pisadas
-(CIAS) 111 - Entrega o teu caminho
-(CIAS) 230 - Esta canção
-(CIAS) 157 - Este mundo não é meu lugar
-(CIAS) 05 - Estou aqui pra confessar
-(CIAS) 98 - Eu abri meu coração
-(CIAS) 36 - Eu quero andar sempre com Jesus
-(CIAS) 107 - Eu quero cantar
-(CIAS) 208 - Eu quero ir para o céu
-(CIAS) 31 - Eu quero ser o sal da terra
-(CIAS) 26 - Eu sou uma ovelhinha
-(CIAS) 110 - Eu tudo posso naquele que me fortalece
-(CIAS) 225 - Eu vim aqui, Senhor
-(CIAS) 238 - Eu vou cantar
-(CIAS) 64 - Eu vou contar uma história (Zaqueu)
-(CIAS) 241 - Exaltai, exaltai
-(CIAS) 80 - Existe um lugar
-(CIAS) 160 - Existem segredos na tua palavra
-(CIAS) 177 - Fala ao meu coração, Jesus
-(CIAS) 22 - Faze oração
-(CIAS) 135 - Flua em mim, Senhor
-(CIAS) 83 - Foi no caminho para Damasco
-(CIAS) 193 - Há uma igreja
-(CIAS) 57 - Há uma linda canção de amor
-(CIAS) 185 - Há uma linda morada
-(CIAS) 105 - Haveremos de chegar
-(CIAS) 108 - Hoje é um grande dia
-(CIAS) 232 - Hoje eu não quero pedir
-(CIAS) 228 - Hosana ao Filho de Davi
-(CIAS) 190 - Igreja, corpo de Cristo
-(CIAS) 226 - Irei cantar e adorar o Rei Jesus
-(CIAS) 188 - Jerusalém anseio ver
-(CIAS) 181 - Jerusalém, cidade do meu Rei
-(CIAS) 168 - Jesus chama os seus ministros
-(CIAS) 48 - Jesus Cristo é o amado
-(CIAS) 106 - Jesus Cristo é o caminho
-(CIAS) 92 - Jesus cura e salva
-(CIAS) 239 - Jesus é a nossa vitória
-(CIAS) 97 - Jesus é o caminho
-(CIAS) 76 - Jesus falou que o céu é pra mim
-(CIAS) 101 - Jesus me ama
-(CIAS) 196 - Jesus nos prometeu
-(CIAS) 207 - Jesus prometeu nos buscar
-(CIAS) 45 - Jesus ressuscitou! (Meu amigo Jesus)
-(CIAS) 93 - Jesus te ama
-(CIAS) 133 - Jesus vê a sua igreja
-(CIAS) 82 - Jesus vem nos buscar
-(CIAS) 71 - Jesus viu a multidão (A multiplicação)
-(CIAS) 210 - Jesus voltará pra me buscar! (Maranata)
-(CIAS) 115 - Jesus, o bom Pastor
-(CIAS) 119 - Jesus, o melhor amigo
-(CIAS) 29 - Jesus, quando me lembro
-(CIAS) 15 - Jesus, vem me abençoar
-(CIAS) 213 - Lá no doce porvir
-(CIAS) 136 - Lâmpada para meus pés
-(CIAS) 204 - "Marchai! Marchai!"
-(CIAS) 197 - Maranata! Vem, Senhor Jesus
-(CIAS) 218 - Maranata
-(CIAS) 67 - Maravilha é o amor de Deus
-(CIAS) 132 - Meu barco e pequeno
-(CIAS) 121 - Meu barquinho
-(CIAS) 130 - Meu bom pastor é Cristo
-(CIAS) 01 - Meu Deus, meu Pai
-(CIAS) 42 - Minha vida e meu coração
-(CIAS) 237 - Muitos motivos tenho
-(CIAS) 39 - Na areia não quero construir (Firme, sim!)
-(CIAS) 233 - Na cidade de Davi nasceu o Salvador
-(CIAS) 194 - Na nova Jerusalém
-(CIAS) 137 - Não por força
-(CIAS) 152 - Nas batalhas sou um vencedor (Armadura de Deus)
-(CIAS) 66 - Nasceu um novo dia
-(CIAS) 123 - Nesta batalha não tereis de pelejar
-(CIAS) 85 - Neste dia especial
-(CIAS) 104 - No caminho ele me guiará
-(CIAS) 158 - No caminho eu quero estar
-(CIAS) 206 - No céu um dia nós vamos morar
-(CIAS) 184 - No expresso viajamos
-(CIAS) 99 - No meu coração
-(CIAS) 37 - No meu coração há um tesouro (Príncipe da vida)
-(CIAS) 151 - No princípio era o verbo
-(CIAS) 214 - Nós receberemos lá no céu
-(CIAS) 170 - Nós somos a carta de Cristo
-(CIAS) 149 - Nós somos uma voz
-(CIAS) 186 - Nossas vidas são mudadas
-(CIAS) 144 - Nova aliança
-(CIAS) 124 - O céu e a terra passarão
-(CIAS) 70 - O dia do Senhor virá (O sol da justiça)
-(CIAS) 198 - O dia está chegando
-(CIAS) 203 - O tio de escarlata é o mistério
-(CIAS) 59 - O nome do meu Senhor
-(CIAS) 240 - O Senhor dos exércitos está aqui
-(CIAS) 78 - O Senhor é a minha luz e a minha salvação
-(CIAS) 87 - O Senhor é o bom Pastor
-(CIAS) 114 - O Senhor é quem cuida de mim
-(CIAS) 65 - Onde nasceu Jesus?
-(CIAS) 25 - Onde quer que tu fores irei, Jesus
-(CIAS) 220 - Onde vive o Rei da glória?
-(CIAS) 129 - Ontem, hoje e para sempre
-(CIAS) 179 - Orar faz bem
-(CIAS) 211 - Os dias estão passando
-(CIAS) 173 - Ouço o clamor do bom Pastor
-(CIAS) 16 - Pai Celeste
+745 - É Deus quem nos tem dado a vitória
+746 - Jesus é o amigo melhor
+747 - Senhor, manda poder
+748 - Que calor é este em volta do altar?
+749 - Manda fogo, Senhor
+750 - Deixa a glória de Deus brilhar
+751 - Eu louvarei, eu louvarei
+752 - Estou alegre
+753 - A noiva é a igreja
+754 - Eu verei a árvore da vida
+755 - Somente pela fé
+756 - Quem cantar aqui se alegrará
+757 - Como aconteceu em Jerusalém
+758 - Esta alegria não vai mais sair
+759 - Nunca mais, nunca mais
+760 - Do céu virá
+761 - Cada passo que dás
+762 - O céu é um lugar maravilhoso
+763 - Jesus é tudo pra mim
+764 - Nós vamos lá, irmãos
+765 - Lá no céu todos cantam aleluia!
+766 - No dia da grande glória
+767 - Conta pra Jesus onde é a tua dor
+768 - A vitória desta igreja é oração
+769 - O grande relógio
+770 - Por que deixar que as ânsias
+771 - Caminhando para Canaã
+772 - Cada dia me dirige
+773 - Abra a porta, venha ver
+774 - Chegado a cruz do meu Salvador
+775 - Subindo para o céu eu vou
+776 - Certa vez eu orando
+777 - Como as águas
+778 - Deus está aqui
+779 - Abre a porta do teu coração
+780 - Cantei, cantarei as misericórdias
+781 - Só o poder de Deus
+782 - Tenho nova vida
+783 - Feliz, feliz eu sou
+784 - Cantei ao Senhor um cântico novo
+785 - Estou confiando
+786 - Que as palavras da minha boca
+787 - Ardeu em fogo minha alma está
+788 - Igreja, tu vais subir
+789 - Na presença de Jesus
+790 - Aquele que habita no esconderijo
+791 - Eu quero mais e mais de Cristo
+792 - Louvando a Deus (At 2.47)
+793 - Mesa preparada
+794 - Jesus libertou
+(CIAS) 01 - Meu Deus, Meu Pai
 (CIAS) 02 - Pai, estou a te clamar
-(CIAS) 223 - Pai, tua beleza me admira
-(CIAS) 06 - Perdoa—me, Senhor
+(CIAS) 03 - Clamo, ó Senhor por teu sangue
+(CIAS) 04 - Clamo, ó Senhor
+(CIAS) 05 - Estou aqui pronto a confessar
+(CIAS) 06 - Perdoa-me, Senhor
+(CIAS) 07 - É teu sangue, meu Senhor Jesus
+(CIAS) 08 - Diante do teu altar
+(CIAS) 09 - Dobro os meus joelhos
+(CIAS) 10 - Clama, ó igreja
+(CIAS) 11 - Clamo a ti, meu Senhor e Pai (Uma Nova Canção)
 (CIAS) 12 - Perdoa-me, Senhor, segundo o seu amor
-(CIAS) 120 - Poderá cantar
-(CIAS) 32 - Príncipe da Paz
 (CIAS) 13 - Purificado com sangue estou
-(CIAS) 19 - Quando Davi ao Senhor orava
-(CIAS) 17 - Quando falo com Deus
-(CIAS) 23 - Quando Israel saiu do Egito
-(CIAS) 20 - Quando oro ao Senhor
-(CIAS) 81 - Quando ouvi Jesus me chamar
-(CIAS) 172 - Quatro coisas tão pequeninas
-(CIAS) 141 - Quem irá? (Preciosa semente)
-(CIAS) 84 - Queres ser feliz?
-(CIAS) 155 - Quero estar em tua presença, o Deus
-(CIAS) 40 - Quero ouvir (Meu querer)
-(CIAS) 35 - Quero ser como Davi
-(CIAS) 180 - Quero ser fiel (Jesus está vivo)
-(CIAS) 165 - Quero ser santo para o Senhor
-(CIAS) 182 - Quero viver para sempre com Jesus
-(CIAS) 145 - Revelação abre pra você
-(CIAS) 21 - Santo, justo, Príncipe da vida
-(CIAS) 209 - Se eu falo do grande amor do Pai
-(CIAS) 212 - Sei que Cristo voltará
-(CIAS) 61 - Sei que na cruz seu sangue verteu
-(CIAS) 234 - Sei que sou amado do meu Salvador
-(CIAS) 236 - Senhor Deus, tu és varão de guerra
-(CIAS) 235 - Senhor, eu te louvarei
-(CIAS) 159 - Servo do Senhor eu sou
-(CIAS) 169 - Sete cartas
-(CIAS) 52 - Seu nome é maravilhoso
-(CIAS) 216 - Sobre as nuvens descerá (Ele virá)
-(CIAS) 201 - Sobre as nuvens Jesus vem
-(CIAS) 116 - Sobre as ondas
-(CIAS) 156 - Somos cidadãos do céu
-(CIAS) 96 - Sonhei com Jesus esta noite
-(CIAS) 43 - Sou feliz!
-(CIAS) 171 - Sou o Santo
-(CIAS) 44 - Sou servo do Senhor
-(CIAS) 138 - Sou um soldado do bom Salvador
-(CIAS) 28 - Sou uma criança feliz
 (CIAS) 14 - Te suplico, ó Deus, em oração
-(CIAS) 63 - Tem bom ãnimo, pobre pecador
+(CIAS) 15 - Jesus, vem me abençoar
+(CIAS) 16 - Pai Celeste
+(CIAS) 17 - Quando falo com Deus
+(CIAS) 18 - Buscai ao Senhor
+(CIAS) 19 - Quando Davi ao Senhor orava
+(CIAS) 20 - Quando oro ao Senhor
+(CIAS) 21 - Santo, Justo, Príncipe da Vida
+(CIAS) 22 - Faz oração
+(CIAS) 23 - Quando Israel saiu do Egito
+(CIAS) 24 - Uma ovelhinha de Jesus eu sou
+(CIAS) 25 - Onde quer que tu fores, irei Jesus
+(CIAS) 26 - Eu sou uma ovelhinha de Jesus
+(CIAS) 27 - Ele é a Raiz
+(CIAS) 28 - Sou uma criança feliz
+(CIAS) 29 - Jesus, quando me lembro
+(CIAS) 30 - Ele vive em mim
+(CIAS) 31 - Eu quero ser o sal da terra
+(CIAS) 32 - Príncipe da paz
+(CIAS) 33 - Cristo, meu bom Mestre
+(CIAS) 34 - Tenho um Senhor muito forte
+(CIAS) 35 - Quero ser como Davi
+(CIAS) 36 - Eu quero andar sempre com Jesus
+(CIAS) 37 - No meu coração há um tesouro (Príncipe da Vida)
+(CIAS) 38 - Tenho um coração alegre
+(CIAS) 39 - Na areia não quero construir (Firme, sim!)
+(CIAS) 40 - Quero ouvir (Meu querer)
+(CIAS) 41 - A minha casa firme está
+(CIAS) 42 - Minha vida e meu coração
+(CIAS) 43 - Sou feliz!
+(CIAS) 44 - Sou servo do Senhor
+(CIAS) 45 - Jesus ressuscitou! (Meu amigo Jesus)
+(CIAS) 46 - Como é bom servir a Deus
+(CIAS) 47 - Tenho no meu coração
+(CIAS) 48 - Jesus Cristo é o amado
+(CIAS) 49 - A minha alegria é crescer com o meu Senhor
+(CIAS) 50 - Do alto céu
+(CIAS) 51 - Eis-me aqui, Senhor, em teu altar
+(CIAS) 52 - Seu nome é maravilhoso
+(CIAS) 53 - É bom, é bom demais
+(CIAS) 54 - Como é bom saber
+(CIAS) 55 - É somente teu meu coração
+(CIAS) 56 - Cristo é o Senhor
+(CIAS) 57 - Há uma linda canção de amor
+(CIAS) 58 - Viver é tão lindo
+(CIAS) 59 - O nome do meu Senhor!
+(CIAS) 60 - Deus falou comigo
+(CIAS) 61 - Sei que na cruz seu sangue verteu
+(CIAS) 62 - É tão triste não ver a luz (Cego Bartimeu)
+(CIAS) 63 - Tem bom ânimo, pobre pecador
+(CIAS) 64 - Eu vou contar uma história (Zaqueu)
+(CIAS) 65 - Onde nasceu Jesus?
+(CIAS) 66 - Nasceu um novo dia
+(CIAS) 67 - Maravilha é o amor de Deus
+(CIAS) 68 - Vem para o meio (Águas da Salvação)
+(CIAS) 69 - Você sabe o que é salvação?
+(CIAS) 70 - O dia do Senhor virá (O Sol da justiça)
+(CIAS) 71 - Jesus viu a multidão (A multiplicação)
+(CIAS) 72 - Tu és o Cristo, o filho do Deus vivo
+(CIAS) 73 - De eternidade a eternidade
+(CIAS) 74 - Aquilo que melhor existe
+(CIAS) 75 - Você sabe quem foi João Batista?
+(CIAS) 76 - Jesus falou que o céu é pra mim
+(CIAS) 77 - Vou contar-vos de Jesus
+(CIAS) 78 - O Senhor é a minha luz e a minha salvação
+(CIAS) 79 - Deus ama você
+(CIAS) 80 - Existe um lugar
+(CIAS) 81 - Quando ouvi Jesus me chamar
+(CIAS) 82 - Jesus vem nos buscar
+(CIAS) 83 - Foi no caminho para Damasco
+(CIAS) 84 - Queres ser feliz?
+(CIAS) 85 - Neste dia especial
+(CIAS) 86 - Um dia morreu o meu Jesus
+(CIAS) 87 - O Senhor é o bom pastor
+(CIAS) 88 - Vou contar para você uma história especial
+(CIAS) 89 - Certo homem, príncipe dos judeus (Nicodemos)
+(CIAS) 90 - Ele morreu, mas ressurgiu
 (CIAS) 91 - Tenho algo pra você
-(CIAS) 47 - Tenho no meu coração`;
+(CIAS) 92 - Jesus cura e salva
+(CIAS) 93 - Jesus te ama
+(CIAS) 94 - Aquele que tem sede
+(CIAS) 95 - Do pão do céu
+(CIAS) 96 - Sonhei com Jesus esta noite
+(CIAS) 97 - Jesus é o caminho
+(CIAS) 98 - Eu abri meu coração
+(CIAS) 99 - No meu coração
+(CIAS) 100 - Cristo sente seu amor por mim
+(CIAS) 101 - Jesus me ama
+(CIAS) 102 - Das maravilhas que a Bíblia contém
+(CIAS) 103 - Vinde, meninos
+(CIAS) 104 - No caminho ele me guiará
+(CIAS) 105 - Haveremos de chegar
+(CIAS) 106 - Jesus Cristo é o caminho
+(CIAS) 107 - Eu quero cantar
+(CIAS) 108 - Hoje é um grande dia
+(CIAS) 109 - Canta, alegremente, ó filha de Sião
+(CIAS) 110 - Eu tudo posso naquele que me fortalece
+(CIAS) 111 - Entrega o teu caminho
+(CIAS) 112 - Consola-me, Espírito Santo
+(CIAS) 113 - Tua mão é poderosa
+(CIAS) 114 - O Senhor é quem cuida de mim
+(CIAS) 115 - Jesus, o bom pastor
+(CIAS) 116 - Sobre as ondas
+(CIAS) 117 - Deitada na relva uma feliz ovelha
+(CIAS) 118 - Âncora Segura
+(CIAS) 119 - Jesus, o melhor amigo
+(CIAS) 120 - Poderá cantar
+(CIAS) 121 - Meu barquinho
+(CIAS) 122 - Cristo é meu amigo
+(CIAS) 123 - Nesta batalha não tereis que pelejar
+(CIAS) 124 - O céu e a terra passarão
+(CIAS) 125 - Com Jesus vencedor serei
+(CIAS) 126 - Deus forte como Jeová
+(CIAS) 127 - Cristo é vitória
+(CIAS) 128 - Cristo é meu amigo, é meu amigo
+(CIAS) 129 - Ontem, hoje e para sempre
+(CIAS) 130 - Meu bom pastor é Cristo
+(CIAS) 131 - Com Cristo no barco
+(CIAS) 132 - Meu barco é pequeno
+(CIAS) 133 - Jesus vê a sua igreja
+(CIAS) 134 - Vou caminhando pra Jerusalém
+(CIAS) 135 - Flua em mim, Senhor
+(CIAS) 136 - Lâmpada para os meus pés
+(CIAS) 137 - Não por força
+(CIAS) 138 - Sou um soldado do bom Salvador
+(CIAS) 139 - Dons do Espírito Santo
+(CIAS) 140 - Uma luz resplandecente
+(CIAS) 141 - Quem irá? (Preciosa semente)
+(CIAS) 142 - Como uma folha ao vento
+(CIAS) 143 - Tenho uma Candeia (Candeia Acesa)
+(CIAS) 144 - Nova aliança
+(CIAS) 145 - Revelação abre pra você
+(CIAS) 146 - A igreja que ora é vitoriosa
+(CIAS) 147 - Em tuas pisadas
+(CIAS) 148 - Andando em Espírito (Fruto do Espírito)
+(CIAS) 149 - Nós somos uma voz
+(CIAS) 150 - Cinco ceixos
+(CIAS) 151 - No princípio era o Verbo
+(CIAS) 152 - Nas batalhas sou um vencedor (Armadura de Deus)
+(CIAS) 153 - Como Noé
+(CIAS) 154 - Com o Espírito de Deus em minha vida
+(CIAS) 155 - Quero estar em tua presença, ó Deus
+(CIAS) 156 - Somos cidadãos do céu
+(CIAS) 157 - Este mundo não é meu lugar
+(CIAS) 158 - No caminho eu quero estar
+(CIAS) 159 - Sou servo do Senhor
+(CIAS) 160 - Existem segredos na tua palavra
+(CIAS) 161 - Tu és pra mim um vaso escolhido
+(CIAS) 162 - Andai na minha presença
+(CIAS) 163 - Dá-me um coração cheio do
+(CIAS) 164 - Dá-me um coração humilde e reto
+(CIAS) 165 - Quero ser santo para o Senhor
+(CIAS) 166 - Brilhando, brilhando
+(CIAS) 167 - Daniel na cova dos leões
+(CIAS) 168 - Jesus chama os seus ministros
+(CIAS) 169 - Sete cartas
+(CIAS) 170 - Nós somos a carta de Cristo
+(CIAS) 171 - Sou o Santo
+(CIAS) 172 - Quatro coisas tão pequeninas
+(CIAS) 173 - Ouço o clamor do bom Pastor
+(CIAS) 174 - A tua palavra é semente
+(CIAS) 175 - Um certo pastorzinho
+(CIAS) 176 - Cria em mim, ó Deus
+(CIAS) 177 - Fala ao meu coração, Jesus
+(CIAS) 178 - Disse Jesus aos judeus (Eu trabalho também)
+(CIAS) 179 - Orar faz bem
+(CIAS) 180 - Quero ser fiel (Jesus está vivo)
+(CIAS) 181 - Jerusalém, cidade do meu Rei
+(CIAS) 182 - Quero viver para sempre com Jesus
+(CIAS) 183 - Um novo céu, uma nova terra se fará
+(CIAS) 184 - No expresso viajamos
+(CIAS) 185 - Há uma linda morada
+(CIAS) 186 - Nossas vidas são mudadas
+(CIAS) 187 - Varões galileus
+(CIAS) 188 - Jerusalém anseio ver
+(CIAS) 189 - Um dia a igreja subirá
+(CIAS) 190 - Igreja, corpo de Cristo
+(CIAS) 191 - A noiva amada do Cordeiro
+(CIAS) 192 - Vou pra Jerusalém
+(CIAS) 193 - Há uma igreja que aguarda o Senhor
+(CIAS) 194 - Na nova Jerusalém
+(CIAS) 195 - Em breve estaremos na glória
+(CIAS) 196 - Jesus nos prometeu
+(CIAS) 197 - Maranata! Vem, Senhor Jesus
+(CIAS) 198 - O dia está chegando
+(CIAS) 199 - Aguardando a orientação do Salvador
+(CIAS) 200 - Vou para o meu lar
+(CIAS) 201 - Sobre as nuvens Jesus vem
+(CIAS) 202 - A Raabe veio a ordem
+(CIAS) 203 - O fio de escarlata é o mistério
+(CIAS) 204 - “Marchai”! “Marchai”!
+(CIAS) 205 - A minha alma espera
+(CIAS) 206 - No céu um dia nós vamos morar
+(CIAS) 207 - Jesus prometeu nos buscar
+(CIAS) 208 - Eu quero ir para o céu
+(CIAS) 209 - Se eu falo do grande amor do Pai
+(CIAS) 210 - Jesus voltará pra me buscar! (Maranata)
+(CIAS) 211 - Os dias estão passando
+(CIAS) 212 - Sei que Cristo voltará
+(CIAS) 213 - Lá no doce porvir
+(CIAS) 214 - Nós receberemos lá no céu
+(CIAS) 215 - Eis que Jesus vem nas nuvens
+(CIAS) 216 - Sobre as nuvens descerá (Ele virá)
+(CIAS) 217 - Verei meu grande Rei
+(CIAS) 218 - Maranata
+(CIAS) 219 - Ele virá no meio da noite
+(CIAS) 220 - Onde vive o Rei da Glória?
+(CIAS) 221 - Vai raiar o dia
+(CIAS) 222 - Deus habita no meio dos louvores
+(CIAS) 223 - Pai, tua beleza me admira
+(CIAS) 224 - Deus criou os céus e a terra
+(CIAS) 225 - Eu vim aqui, Senhor
+(CIAS) 226 - Irei cantar e adorar o Rei Jesus
+(CIAS) 227 - A Jesus irei louvar
+(CIAS) 228 - Hosana ao Filho de Davi
+(CIAS) 229 - Cantai alegremente a Deus
+(CIAS) 230 - Esta canção
+(CIAS) 231 - Todo ser que tem fôlego
+(CIAS) 232 - Hoje eu não quero pedir
+(CIAS) 233 - Na cidade de Davi nasceu o Salvador
+(CIAS) 234 - Sei que sou amado do meu Salvador
+(CIAS) 235 - Senhor, eu te louvarei
+(CIAS) 236 - Senhor, Deus tu és varão de guerra
+(CIAS) 237 - Muitos motivos tenho
+(CIAS) 238 - Eu vou cantar
+(CIAS) 239 - Jesus é a nossa vitória
+(CIAS) 240 - O Senhor dos exércitos está aqui
+(CIAS) 241 - Exaltai, Exaltai`;
 
         let hinosArray = [];
 
