@@ -45,8 +45,9 @@
             gap: 10px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -54,6 +55,7 @@
             color: #333;
             box-shadow: none;
             flex: 1;
+            min-width: 150px;
         }
 
         .tab-btn.active {
@@ -64,7 +66,7 @@
         .tab-content {
             display: none;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             flex-direction: column;
             align-items: center;
         }
@@ -78,6 +80,7 @@
             position: relative;
             margin-bottom: 15px;
             width: 100%;
+            max-width: 600px;
             display: flex;
             gap: 10px;
         }
@@ -100,6 +103,7 @@
         .config-container {
             margin-bottom: 20px;
             width: 100%;
+            max-width: 600px;
         }
 
         .config-container input {
@@ -177,6 +181,10 @@
             overflow-wrap: normal;
             overflow-x: auto;
         }
+        
+        #textarea-banco-cifras {
+            height: 400px;
+        }
 
         /* ÁREA QUE SERÁ TRANSFORMADA EM IMAGEM */
         .capture-wrapper {
@@ -185,6 +193,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             width: 100%;
+            max-width: 600px;
             overflow-x: auto;
         }
 
@@ -261,6 +270,37 @@
         td[contenteditable="true"]:hover {
             background-color: #f9f9f9;
         }
+        
+        /* Estilos da aba de Cifras */
+        #container-cifras {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cifra-block {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-family: monospace; /* Fonte monoespaçada é CRÍTICA para alinhar cifras */
+            font-size: 16px;
+            white-space: pre-wrap; /* Mantém as quebras de linha do texto original */
+            overflow-x: auto;
+            color: #333;
+        }
+
+        .cifra-block strong {
+            color: var(--primary);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
 
         @media (max-width: 600px) {
             body { padding: 10px; }
@@ -275,7 +315,9 @@
 
     <div class="tabs">
         <button class="tab-btn active" onclick="alternarAba('gerador')">📋 Gerador</button>
+        <button class="tab-btn" onclick="alternarAba('cifras')">🎸 Cifras da Lista</button>
         <button class="tab-btn" onclick="alternarAba('gerenciar')">☁️ Gerenciar Hinos</button>
+        <button class="tab-btn" onclick="alternarAba('banco-cifras')">📄 Banco de Cifras</button>
     </div>
 
     <div id="tab-gerador" class="tab-content active">
@@ -329,6 +371,15 @@
         </div>
     </div>
 
+    <div id="tab-cifras" class="tab-content">
+        <div class="controls">
+            <button onclick="renderizarCifras()" class="btn-add">🔄 Atualizar Cifras</button>
+        </div>
+        <div id="container-cifras">
+            <p style="text-align: center; color: #666;">As cifras dos louvores selecionados na lista aparecerão aqui.</p>
+        </div>
+    </div>
+
     <div id="tab-gerenciar" class="tab-content">
         <div style="width: 100%; margin-bottom: 15px;">
             <label style="font-weight: bold; display: block; margin-bottom: 5px; text-align: left;">📚 Coletânea (um hino por linha):</label>
@@ -346,6 +397,15 @@
         </div>
 
         <button onclick="salvarHinosNuvem()" class="btn-nuvem">☁️ Salvar no Banco de Dados</button>
+    </div>
+
+    <div id="tab-banco-cifras" class="tab-content">
+        <div style="width: 100%; margin-bottom: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px; text-align: left;">📄 Texto Bruto das Cifras (Cole o texto extraído do PDF aqui):</label>
+            <p style="font-size: 13px; color: #666; margin-bottom: 10px; text-align: left;">O sistema buscará as cifras digitadas neste campo. O texto deve conter o número do hino seguido de hífen para funcionar corretamente (Ex: "3 - CLAMO A TI").</p>
+            <textarea id="textarea-banco-cifras" class="textarea-hinos" placeholder="Cole o texto do PDF aqui..."></textarea>
+        </div>
+        <button onclick="salvarBancoCifrasNuvem()" class="btn-nuvem">☁️ Salvar Cifras na Nuvem</button>
     </div>
 
     <script type="module">
@@ -369,6 +429,7 @@
         // Variáveis Globais
         let salvandoRemotamente = false;
         let hinosArray = [];
+        let textoBancoCifras = ""; // Armazena o texto bruto das cifras
 
         window.onload = function() {
             // Configurar Data
@@ -417,6 +478,15 @@
                     document.getElementById('textarea-avulsos').value = avulsos.join('\n');
 
                     processarHinosParaBusca(coletanea, cias, avulsos);
+                }
+            });
+
+            // OUVIR BANCO DE CIFRAS (DA NUVEM)
+            onSnapshot(doc(db, "configuracoes", "textosCifras"), (docSnap) => {
+                if (docSnap.exists()) {
+                    const dados = docSnap.data();
+                    textoBancoCifras = dados.conteudo || "";
+                    document.getElementById('textarea-banco-cifras').value = textoBancoCifras;
                 }
             });
 
@@ -588,17 +658,38 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             
-            if (aba === 'gerador') {
-                document.getElementById('tab-gerador').classList.add('active');
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-            } else {
-                document.getElementById('tab-gerenciar').classList.add('active');
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            let btnIndex = 0;
+            if (aba === 'gerador') btnIndex = 0;
+            if (aba === 'cifras') { btnIndex = 1; renderizarCifras(); }
+            if (aba === 'gerenciar') btnIndex = 2;
+            if (aba === 'banco-cifras') btnIndex = 3;
+
+            document.getElementById('tab-' + aba).classList.add('active');
+            document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+        };
+
+        window.salvarBancoCifrasNuvem = async function() {
+            const btn = document.querySelector('#tab-banco-cifras .btn-nuvem');
+            btn.textContent = "Salvando...";
+            const conteudo = document.getElementById('textarea-banco-cifras').value;
+            
+            try {
+                await setDoc(doc(db, "configuracoes", "textosCifras"), {
+                    conteudo: conteudo,
+                    atualizadoEm: new Date().toISOString()
+                });
+                alert("Banco de Cifras atualizado na nuvem com sucesso!");
+                textoBancoCifras = conteudo;
+            } catch (error) {
+                console.error("Erro ao salvar banco de cifras:", error);
+                alert("Erro ao salvar o banco de cifras.");
+            } finally {
+                btn.textContent = "☁️ Salvar Cifras na Nuvem";
             }
         };
 
         window.salvarHinosNuvem = async function() {
-            const btn = document.querySelector('.btn-nuvem');
+            const btn = document.querySelector('#tab-gerenciar .btn-nuvem');
             btn.textContent = "Salvando...";
 
             const txtColetanea = document.getElementById('textarea-coletanea').value;
@@ -776,7 +867,82 @@
             const celulas = document.querySelectorAll('td[contenteditable="true"]');
             celulas.forEach(celula => celula.textContent = '');
             salvarNoFirestore();
+            document.getElementById('container-cifras').innerHTML = '<p style="text-align: center; color: #666;">As cifras dos louvores selecionados na lista aparecerão aqui.</p>';
         };
+
+        // Função principal para extrair e renderizar as cifras baseadas na lista atual
+        window.renderizarCifras = function() {
+            const container = document.getElementById('container-cifras');
+            container.innerHTML = ''; // Limpa o container
+            
+            if (!textoBancoCifras || textoBancoCifras.trim() === '') {
+                container.innerHTML = '<p style="text-align: center; color: #c8102e; font-weight: bold;">O Banco de Cifras está vazio. Cole o texto do PDF na aba "Banco de Cifras".</p>';
+                return;
+            }
+
+            const linhas = document.querySelectorAll('#tabela-corpo tr');
+            let encontrouAlguma = false;
+
+            linhas.forEach(linha => {
+                const cels = linha.querySelectorAll('td');
+                let numRaw = cels[0].textContent.trim();
+                let nomeRaw = cels[1].textContent.trim();
+
+                if (numRaw !== '') {
+                    // Limpa formatações extras de CIAS/AVULSO para focar só no número, se for o caso
+                    // O PDF normalmente traz o número cru (ex: "3 - CLAMO A TI" ou "4- QUANDO")
+                    let numLimpo = numRaw.replace(/\D/g, ''); 
+                    
+                    if (numLimpo) {
+                        let cifraExtraida = extrairBlocoCifra(numLimpo, textoBancoCifras);
+                        
+                        if (cifraExtraida) {
+                            encontrouAlguma = true;
+                            let block = document.createElement('div');
+                            block.className = 'cifra-block';
+                            
+                            // Remove tags de source geradas pelo IA no dump, caso existam, para ficar mais limpo
+                            let textoLimpo = cifraExtraida.replace(/\/g, '').trim();
+
+                            block.innerHTML = `<strong>${numRaw} - ${nomeRaw}</strong>${textoLimpo}`;
+                            container.appendChild(block);
+                        }
+                    }
+                }
+            });
+
+            if (!encontrouAlguma) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">Nenhuma cifra correspondente aos números da lista foi encontrada no Banco de Cifras.</p>';
+            }
+        };
+
+        // Função auxiliar que busca o bloco de texto de um hino específico
+        function extrairBlocoCifra(numeroHino, textoCompleto) {
+            // Regex para encontrar o início do hino: "1 - NOME", "1- NOME", "1 NOME"
+            // Garante que o número esteja no início de uma linha
+            const startRegex = new RegExp(`(?:^|\\n)\\s*${numeroHino}\\s*[-–]`, 'i');
+            const matchStart = textoCompleto.match(startRegex);
+
+            if (!matchStart) return null;
+
+            const startIndex = matchStart.index;
+            const restoDoTexto = textoCompleto.substring(startIndex + matchStart[0].length);
+            
+            // Regex para encontrar o início do PRÓXIMO hino para demarcar o fim da extração
+            // Busca quebra de linha seguida de números e hífen
+            const endRegex = /\n\s*\d+\s*[-–]\s*[A-Z]/;
+            const matchEnd = restoDoTexto.match(endRegex);
+
+            let textoExtraido = "";
+            if (matchEnd) {
+                textoExtraido = textoCompleto.substring(startIndex, startIndex + matchStart[0].length + matchEnd.index);
+            } else {
+                // Se não achar o próximo, pega até o fim do texto
+                textoExtraido = textoCompleto.substring(startIndex);
+            }
+
+            return textoExtraido;
+        }
 
         window.salvarImagem = async function(e) {
             const elemento = document.getElementById('lista-louvores');
